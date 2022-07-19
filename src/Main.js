@@ -1,12 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Recettes } from "../pages/Recettes";
-import { NouvelleRecette } from "../pages/NouvelleRecette";
-// import "../styles/home.css";
-// import "../styles/App.css";
+import Home from "./pages/Home";
+import Recettes from "./pages/Recettes";
+import NouvelleRecette from "./pages/NouvelleRecette";
 
-export const Main = () => {
+const Main = () => {
   return (
     <div className="main">
       <Routes>
@@ -18,3 +16,5 @@ export const Main = () => {
     </div>
   );
 };
+
+export default Main;

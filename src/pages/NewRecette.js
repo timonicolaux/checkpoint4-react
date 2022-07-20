@@ -91,7 +91,7 @@ const NouvelleRecette = () => {
                       </div>
                     </div>
                     {ingredientList.length - 1 === index &&
-                      ingredientList.length < 4 && (
+                      ingredientList.length < 15 && (
                         <button
                           onClick={addIngredient}
                           type="button"
@@ -133,7 +133,7 @@ const NouvelleRecette = () => {
                         )}
                       </div>
                     </div>
-                    {stepList.length - 1 === index && stepList.length < 4 && (
+                    {stepList.length - 1 === index && stepList.length < 15 && (
                       <button
                         onClick={addStep}
                         type="button"

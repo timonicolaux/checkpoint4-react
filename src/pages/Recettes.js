@@ -7,6 +7,7 @@ import "../styles/Recettes.css";
 const Recettes = () => {
   const [recettes, getRecettes] = useState([]);
   const [displayDetail, setDisplayDetail] = useState(false);
+  const [category, setCategory] = useState("");
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
@@ -19,7 +20,6 @@ const Recettes = () => {
       .catch(() => console.log("get route not working"));
   }, [recettes]);
 
-  console.log(recettes);
   return (
     <div className="main">
       {displayDetail ? (
@@ -35,10 +35,13 @@ const Recettes = () => {
           className="dish-selector"
           name="dish-selector"
           id="dish-selector"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="starter">ENTRÉES</option>
-          <option value="main-course">PLATS</option>
-          <option value="dessert">DESSERTS</option>
+          <option value="all"></option>
+          <option value="entrées">ENTRÉES</option>
+          <option value="plats">PLATS</option>
+          <option value="desserts">DESSERTS</option>
         </select>
       </div>
       <div>
@@ -46,60 +49,87 @@ const Recettes = () => {
           Retrouvez ici l'ensemble de nos recettes
         </h2>
       </div>
-      <div>
-        <h1 className="category-title">ENTRÉES</h1>
-      </div>
-      <div className="entrees-div">
-        {recettes
-          .filter((category) => category.categorie === "Entrée")
-          .map((data) => (
-            <div
-              onClick={() => {
-                setDisplayDetail(!displayDetail);
-                setDetails(data);
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <RecetteSummary titre={data.titre} image={data.imagerecette} />
-            </div>
-          ))}
-      </div>
-      <div>
-        <h1 className="category-title">PLATS</h1>
-      </div>
-      <div className="plats-div">
-        {recettes
-          .filter((category) => category.categorie === "Plat")
-          .map((data) => (
-            <div
-              onClick={() => {
-                setDisplayDetail(!displayDetail);
-                setDetails(data);
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <RecetteSummary titre={data.titre} image={data.imagerecette} />
-            </div>
-          ))}
-      </div>
-      <div>
+      {category === "entrées" || category === "all" ? (
         <div>
-          <h1 className="category-title">DESSERTS</h1>
+          <h1 className="category-title">ENTRÉES</h1>
         </div>
+      ) : (
+        ""
+      )}
+      <div className="entrees-div">
+        {category === "entrées" || category === "all"
+          ? recettes
+              .filter((category) => category.categorie === "Entrée")
+              .map((data) => (
+                <div
+                  onClick={() => {
+                    setDisplayDetail(!displayDetail);
+                    setDetails(data);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <RecetteSummary
+                    titre={data.titre}
+                    image={data.imagerecette}
+                  />
+                </div>
+              ))
+          : ""}
+      </div>
+      {category === "plats" || category === "all" ? (
+        <div>
+          <h1 className="category-title">PLATS</h1>
+        </div>
+      ) : (
+        ""
+      )}
+      <div className="plats-div">
+        {category === "plats" || category === "all"
+          ? recettes
+              .filter((category) => category.categorie === "Plat")
+              .map((data) => (
+                <div
+                  onClick={() => {
+                    setDisplayDetail(!displayDetail);
+                    setDetails(data);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <RecetteSummary
+                    titre={data.titre}
+                    image={data.imagerecette}
+                  />
+                </div>
+              ))
+          : ""}
+      </div>
+      <div>
+        {category === "desserts" || category === "all" ? (
+          <div>
+            <h1 className="category-title">DESSERTS</h1>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="desserts-div">
-          {recettes
-            .filter((category) => category.categorie === "Dessert")
-            .map((data) => (
-              <div
-                onClick={() => {
-                  setDisplayDetail(!displayDetail);
-                  setDetails(data);
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                <RecetteSummary titre={data.titre} image={data.imagerecette} />
-              </div>
-            ))}
+          {category === "desserts" || category === "all"
+            ? recettes
+                .filter((category) => category.categorie === "Dessert")
+                .map((data) => (
+                  <div
+                    onClick={() => {
+                      setDisplayDetail(!displayDetail);
+                      setDetails(data);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <RecetteSummary
+                      titre={data.titre}
+                      image={data.imagerecette}
+                    />
+                  </div>
+                ))
+            : ""}
         </div>
       </div>
     </div>

@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/NouvelleRecette.css";
 
 const NouvelleRecette = () => {
+  const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
+  const [stepList, setStepList] = useState([{ step: "" }]);
+
+  const addIngredient = () => {
+    setIngredientList([...ingredientList, { ingredient: "" }]);
+  };
+
+  const deleteIngredient = (index) => {
+    const list = [...ingredientList];
+    list.splice(index, 1);
+    setIngredientList(list);
+  };
+
+  const addStep = () => {
+    setStepList([...stepList, { step: "" }]);
+  };
+
+  const deleteStep = (index) => {
+    const list = [...stepList];
+    list.splice(index, 1);
+    setStepList(list);
+  };
+
   return (
     <div className="main">
       <div>
@@ -17,38 +40,112 @@ const NouvelleRecette = () => {
               <label className="label">TITRE DE LA RECETTE</label>
               <input
                 type="text"
+                className="title-input"
                 name="title-recette"
                 id="title-recette"
-                placeHolder="ex: Gâteau au chocolat"
+                placeholder="ex: Gâteau au chocolat"
+                maxlength="60"
                 required
               />
             </div>
-            <div className="ingredients">
-              <label className="label">INGRÉDIENT 1</label>
+            {ingredientList.map((ingredients, index) => (
+              <div key={index} className="all-ingredients">
+                <div className="ingredients">
+                  <div className="ingredient">
+                    <label htmlFor="ingredient" className="label">
+                      INGRÉDIENT
+                    </label>
+                    <div className="input-div">
+                      <input
+                        type="text"
+                        className="ingredient-input"
+                        name="ingredient"
+                        id="ingredient"
+                        placeholder="ex: 150g de farine"
+                        maxlength="60"
+                        required
+                      />
+                      <div>
+                        {ingredientList.length > 1 && (
+                          <button
+                            onClick={deleteIngredient}
+                            type="button"
+                            className="remove-btn"
+                          >
+                            <span>x</span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    {ingredientList.length - 1 === index &&
+                      ingredientList.length < 4 && (
+                        <button
+                          onClick={addIngredient}
+                          type="button"
+                          className="add-btn"
+                        >
+                          <span>+</span>
+                        </button>
+                      )}
+                  </div>
+                </div>
+              </div>
+            ))}
+            {stepList.map((steps, index) => (
+              <div key={index} className="all-ingredients">
+                <div className="ingredients">
+                  <div className="ingredient">
+                    <label htmlFor="step" className="label">
+                      ÉTAPE
+                    </label>
+                    <div className="input-div">
+                      <textArea
+                        rows="5"
+                        className="step-input"
+                        name="step"
+                        id="step"
+                        placeholder="ex: Lavez et épluchez les légumes"
+                        maxlength="300"
+                        required
+                      />
+                      <div>
+                        {stepList.length > 1 && (
+                          <button
+                            onClick={deleteStep}
+                            type="button"
+                            className="remove-btn"
+                          >
+                            <span>x</span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    {stepList.length - 1 === index && stepList.length < 4 && (
+                      <button
+                        onClick={addStep}
+                        type="button"
+                        className="add-btn"
+                      >
+                        <span>+</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="title-recette">
+              <label className="label">IMAGE</label>
               <input
                 type="text"
-                name="ingredient1"
-                id="ingredient1"
-                placeHolder="ex: 150g de farine"
+                className="title-input"
+                name="title-recette"
+                id="title-recette"
+                placeholder="ex: https://super-image.jpg"
+                maxlength="60"
                 required
               />
-              <button type="button" className="add-btn">
-                <span>+</span>
-              </button>
             </div>
-            <div className="ingredients">
-              <label className="label">INGRÉDIENT 2</label>
-              <input
-                type="text"
-                name="ingredient2"
-                id="ingredient2"
-                placeHolder="ex: 2 oeufs"
-              />
-              <button type="button" className="remove-btn">
-                <span>x</span>
-              </button>
-            </div>
-            <button>ENVOYER</button>
+            <button className="submitBtn">ENVOYER</button>
           </div>
         </form>
       </div>

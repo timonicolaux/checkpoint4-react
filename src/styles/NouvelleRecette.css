@@ -5,10 +5,12 @@
   margin: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .title-recette,
-.ingredients {
+.ingredients,
+.ingredient {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -16,16 +18,28 @@
   margin-left: -30px;
 }
 
-.add-btn,
+.add-btn {
+  margin-top: 10px;
+  height: 20px;
+}
+
 .remove-btn {
-  display: block;
-  margin-left: 340px;
-  margin-top: -23px;
+  height: 25px;
+  margin-left: 10px;
 }
 
 input {
-  width: 70%;
   height: 20px;
+  width: 70%;
+}
+
+.input-div {
+  display: flex;
+  width: 70%;
+}
+
+.input-div input {
+  width: 300px;
 }
 
 .label {
@@ -33,4 +47,20 @@ input {
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 1px;
+}
+
+.ingredient-input,
+.title-input {
+  padding-left: 10px;
+}
+
+.step-input {
+  width: 250px;
+  height: 120px;
+  padding-left: 10px;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  margin-bottom: 50px;
 }

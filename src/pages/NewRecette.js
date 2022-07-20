@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/NouvelleRecette.css";
+import "../styles/NewRecette.css";
 
 const NouvelleRecette = () => {
   const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
@@ -47,6 +47,19 @@ const NouvelleRecette = () => {
                 maxlength="100"
                 required
               />
+            </div>
+            <div className="title-recette">
+              <label className="label">CATEGORIE</label>
+              <select
+                className="category-input"
+                name="category-recette"
+                id="category-recette"
+                required
+              >
+                <option value="starter">Entrée</option>
+                <option value="main-course">Plat</option>
+                <option value="dessert">Dessert</option>
+              </select>
             </div>
             {ingredientList.map((ingredients, index) => (
               <div key={index} className="all-ingredients">

@@ -36,27 +36,42 @@ const Recettes = () => {
         </h2>
       </div>
       <div>
-        <div>
-          <h1 className="category-title">ENTRÉES</h1>
-        </div>
-        <div>
-          {recettes.map((data) => (
-            <RecetteSummary titre={data.titre} />
+        <h1 className="category-title">ENTRÉES</h1>
+      </div>
+      <div className="entrees-div">
+        {recettes
+          .filter((category) => category.categorie === "Entrée")
+          .map((data) => (
+            <div>
+              <RecetteSummary titre={data.titre} image={data.imagerecette} />
+            </div>
           ))}
-          map here
-        </div>
       </div>
       <div>
-        <div>
-          <h1 className="category-title">PLATS</h1>
-        </div>
-        <div>map here</div>
+        <h1 className="category-title">PLATS</h1>
+      </div>
+      <div className="plats-div">
+        {recettes
+          .filter((category) => category.categorie === "Plat")
+          .map((data) => (
+            <div>
+              <RecetteSummary titre={data.titre} image={data.imagerecette} />
+            </div>
+          ))}
       </div>
       <div>
         <div>
           <h1 className="category-title">DESSERTS</h1>
         </div>
-        <div>map here</div>
+        <div className="desserts-div">
+          {recettes
+            .filter((category) => category.categorie === "Dessert")
+            .map((data) => (
+              <div>
+                <RecetteSummary titre={data.titre} image={data.imagerecette} />
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );

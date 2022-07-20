@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  --main-font1: "Work Sans", sans-serif;
+  --main-font2: "Poppins", sans-serif;
 }
 
 .main {

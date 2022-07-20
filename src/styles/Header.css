@@ -1,0 +1,36 @@
+header {
+  font-family: var(--main-font1);
+  background-color: #d9d9d9;
+}
+
+.main-title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 35px;
+  letter-spacing: 1px;
+}
+
+.main-title b {
+  font-weight: 600;
+  color: #e82d2d;
+}
+
+.ul-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: auto;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.link-style {
+  text-decoration: none;
+  color: black;
+}
+
+.link-style:hover {
+  color: #e82d2d;
+}

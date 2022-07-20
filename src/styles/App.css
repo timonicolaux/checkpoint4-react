@@ -1,8 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
-}
-
-.main {
-  background-color: cadetblue;
+  margin: 0 auto;
+  padding: 0 auto;
+  --main-font1: "Work Sans", sans-serif;
+  --main-font2: "Poppins", sans-serif;
 }

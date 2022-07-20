@@ -5,7 +5,6 @@ import Vegetables from "../assets/vegetables.jpg";
 const Home = () => {
   return (
     <div className="main">
-      {/* <div className="vegetables-img"></div> */}
       <div>
         <img src={Vegetables} alt="vegetables-img" className="vegetables-img" />
       </div>

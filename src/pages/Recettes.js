@@ -49,7 +49,7 @@ const Recettes = () => {
           Retrouvez ici l'ensemble de nos recettes
         </h2>
       </div>
-      {category === "entrées" || category === "all" ? (
+      {category === "entrées" || category === "all" || category === "" ? (
         <div>
           <h1 className="category-title">ENTRÉES</h1>
         </div>
@@ -57,7 +57,7 @@ const Recettes = () => {
         ""
       )}
       <div className="entrees-div">
-        {category === "entrées" || category === "all"
+        {category === "entrées" || category === "all" || category === ""
           ? recettes
               .filter((category) => category.categorie === "Entrée")
               .map((data) => (
@@ -76,7 +76,7 @@ const Recettes = () => {
               ))
           : ""}
       </div>
-      {category === "plats" || category === "all" ? (
+      {category === "plats" || category === "all" || category === "" ? (
         <div>
           <h1 className="category-title">PLATS</h1>
         </div>
@@ -84,7 +84,7 @@ const Recettes = () => {
         ""
       )}
       <div className="plats-div">
-        {category === "plats" || category === "all"
+        {category === "plats" || category === "all" || category === ""
           ? recettes
               .filter((category) => category.categorie === "Plat")
               .map((data) => (
@@ -104,7 +104,7 @@ const Recettes = () => {
           : ""}
       </div>
       <div>
-        {category === "desserts" || category === "all" ? (
+        {category === "desserts" || category === "all" || category === "" ? (
           <div>
             <h1 className="category-title">DESSERTS</h1>
           </div>
@@ -112,7 +112,7 @@ const Recettes = () => {
           ""
         )}
         <div className="desserts-div">
-          {category === "desserts" || category === "all"
+          {category === "desserts" || category === "all" || category === ""
             ? recettes
                 .filter((category) => category.categorie === "Dessert")
                 .map((data) => (

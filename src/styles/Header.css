@@ -1,9 +1,11 @@
 header {
   font-family: var(--main-font1);
   background-color: #d9d9d9;
+  height: 150px;
 }
 
 .main-title {
+  padding-top: 30px;
   text-align: center;
   font-weight: 400;
   font-size: 35px;
@@ -15,6 +17,10 @@ header {
   color: #e82d2d;
 }
 
+.nav {
+  margin-top: 35px;
+}
+
 .ul-nav {
   display: flex;
   justify-content: space-around;
@@ -24,6 +30,8 @@ header {
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .link-style {

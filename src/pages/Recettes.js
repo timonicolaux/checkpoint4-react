@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import RecetteSummary from "../components/RecetteSummary";
+import RecetteDetail from "../components/RecetteDetail";
 import "../styles/Recettes.css";
 
 const Recettes = () => {
   const [recettes, getRecettes] = useState([]);
+  const [displayDetail, setDisplayDetail] = useState(false);
+  const [details, setDetails] = useState([]);
 
   useEffect(() => {
     axios
@@ -19,6 +22,14 @@ const Recettes = () => {
   console.log(recettes);
   return (
     <div className="main">
+      {displayDetail ? (
+        <RecetteDetail
+          closePopup={() => setDisplayDetail(!displayDetail)}
+          details={details}
+        />
+      ) : (
+        ""
+      )}
       <div className="selector-div">
         <select
           className="dish-selector"
@@ -42,7 +53,13 @@ const Recettes = () => {
         {recettes
           .filter((category) => category.categorie === "Entrée")
           .map((data) => (
-            <div>
+            <div
+              onClick={() => {
+                setDisplayDetail(!displayDetail);
+                setDetails(data);
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <RecetteSummary titre={data.titre} image={data.imagerecette} />
             </div>
           ))}
@@ -54,7 +71,13 @@ const Recettes = () => {
         {recettes
           .filter((category) => category.categorie === "Plat")
           .map((data) => (
-            <div>
+            <div
+              onClick={() => {
+                setDisplayDetail(!displayDetail);
+                setDetails(data);
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <RecetteSummary titre={data.titre} image={data.imagerecette} />
             </div>
           ))}
@@ -67,7 +90,13 @@ const Recettes = () => {
           {recettes
             .filter((category) => category.categorie === "Dessert")
             .map((data) => (
-              <div>
+              <div
+                onClick={() => {
+                  setDisplayDetail(!displayDetail);
+                  setDetails(data);
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <RecetteSummary titre={data.titre} image={data.imagerecette} />
               </div>
             ))}

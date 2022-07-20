@@ -78,18 +78,17 @@ const NouvelleRecette = () => {
                         maxlength="100"
                         required
                       />
-                      <div>
-                        {ingredientList.length > 1 && (
-                          <button
-                            onClick={deleteIngredient}
-                            type="button"
-                            className="remove-btn"
-                          >
-                            <span>x</span>
-                          </button>
-                        )}
-                      </div>
                     </div>
+                    {ingredientList.length > 1 && (
+                      <button
+                        onClick={deleteIngredient}
+                        type="button"
+                        className="remove-btn"
+                      >
+                        <span>x</span>
+                      </button>
+                    )}
+
                     {ingredientList.length - 1 === index &&
                       ingredientList.length < 15 && (
                         <button
@@ -121,18 +120,17 @@ const NouvelleRecette = () => {
                         maxlength="400"
                         required
                       />
-                      <div>
-                        {stepList.length > 1 && (
-                          <button
-                            onClick={deleteStep}
-                            type="button"
-                            className="remove-btn"
-                          >
-                            <span>x</span>
-                          </button>
-                        )}
-                      </div>
                     </div>
+                    {stepList.length > 1 && (
+                      <button
+                        onClick={deleteStep}
+                        type="button"
+                        className="remove-btn"
+                      >
+                        <span>x</span>
+                      </button>
+                    )}
+
                     {stepList.length - 1 === index && stepList.length < 15 && (
                       <button
                         onClick={addStep}

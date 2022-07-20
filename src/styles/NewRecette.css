@@ -2,10 +2,12 @@
   background-color: #d9d9d9;
   width: 90%;
   height: 500px;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .title-recette,
@@ -15,26 +17,18 @@
   flex-direction: column;
   padding: 10px;
   width: 110%;
-  margin-left: -30px;
+  margin-left: -25px;
 }
 
-.add-btn {
-  margin-top: 10px;
-  height: 20px;
-}
-
+.add-btn,
 .remove-btn {
-  height: 25px;
-  margin-left: 10px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  height: 20px;
 }
 
 input {
   height: 20px;
-  width: 70%;
-}
-
-.input-div {
-  display: flex;
   width: 70%;
 }
 

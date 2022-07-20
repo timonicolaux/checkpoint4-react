@@ -1,6 +1,7 @@
 .main {
   background-color: white;
   font-family: var(--main-font1);
+  margin-bottom: 70px;
 }
 
 .vegetables-img {

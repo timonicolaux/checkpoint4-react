@@ -44,7 +44,7 @@ const NouvelleRecette = () => {
                 name="title-recette"
                 id="title-recette"
                 placeholder="ex: Gâteau au chocolat"
-                maxlength="60"
+                maxlength="100"
                 required
               />
             </div>
@@ -62,7 +62,7 @@ const NouvelleRecette = () => {
                         name="ingredient"
                         id="ingredient"
                         placeholder="ex: 150g de farine"
-                        maxlength="60"
+                        maxlength="100"
                         required
                       />
                       <div>
@@ -105,7 +105,7 @@ const NouvelleRecette = () => {
                         name="step"
                         id="step"
                         placeholder="ex: Lavez et épluchez les légumes"
-                        maxlength="300"
+                        maxlength="400"
                         required
                       />
                       <div>
@@ -142,7 +142,6 @@ const NouvelleRecette = () => {
                 id="title-recette"
                 placeholder="ex: https://super-image.jpg"
                 maxlength="60"
-                required
               />
             </div>
             <button className="submitBtn">ENVOYER</button>

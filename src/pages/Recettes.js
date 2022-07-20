@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import RecetteSummary from "../components/RecetteSummary";
 import "../styles/Recettes.css";
 
 const Recettes = () => {
+  const [recettes, getRecettes] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/recettes")
+      .then((result) => result.data)
+      .then((data) => {
+        getRecettes(data);
+      })
+      .catch(() => console.log("get route not working"));
+  }, [recettes]);
+
+  console.log(recettes);
   return (
     <div className="main">
       <div className="selector-div">
@@ -24,7 +39,12 @@ const Recettes = () => {
         <div>
           <h1 className="category-title">ENTRÉES</h1>
         </div>
-        <div>map here</div>
+        <div>
+          {recettes.map((data) => (
+            <RecetteSummary titre={data.titre} />
+          ))}
+          map here
+        </div>
       </div>
       <div>
         <div>

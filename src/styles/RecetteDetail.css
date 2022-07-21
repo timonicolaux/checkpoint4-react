@@ -75,3 +75,9 @@
   text-justify: inter-character;
   padding-top: 40px;
 }
+
+@media screen and (min-width: 1000px) {
+  .close-popup {
+    width: 4%;
+  }
+}

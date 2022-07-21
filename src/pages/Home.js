@@ -51,7 +51,7 @@ const Home = () => {
                 setDetails(data);
               }}
               style={{ cursor: "pointer" }}
-              index={data.titre}
+              key={data.titre}
               className="single-recette"
             >
               <RecetteSummary titre={data.titre} image={data.imagerecette} />

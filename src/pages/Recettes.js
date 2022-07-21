@@ -46,7 +46,7 @@ const Recettes = () => {
       </div>
       <div>
         <h2 className="description-title">
-          Retrouvez ici l'ensemble de nos recettes
+          Retrouvez ici l'ensemble de nos recettes !
         </h2>
       </div>
       {category === "entrées" || category === "all" || category === "" ? (
@@ -67,7 +67,7 @@ const Recettes = () => {
                     setDetails(data);
                   }}
                   style={{ cursor: "pointer" }}
-                  index={data.titre}
+                  key={data.titre}
                   className="single-recette"
                 >
                   <RecetteSummary

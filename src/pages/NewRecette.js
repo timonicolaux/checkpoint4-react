@@ -245,6 +245,7 @@ const NouvelleRecette = () => {
                 value={imageForm}
                 onChange={(e) => setImageForm(e.target.value)}
                 maxLength="300"
+                required
               />
             </div>
             <button type="submit" className="submitBtn" onClick={handleSubmit}>

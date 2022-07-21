@@ -41,10 +41,10 @@ const Home = () => {
           </h2>
         </div>
         <div className="top-recettes-div">
-          <h2 className="top-recettes">NOTRE TOP RECETTES</h2>
+          <h2 className="top-recettes">NOTRE SELECTION</h2>
         </div>
-        <div className="entrees-div">
-          {recettes.slice(0, 4).map((data) => (
+        <div className="selection-div">
+          {recettes.slice(0, 2).map((data) => (
             <div
               onClick={() => {
                 setDisplayDetail(!displayDetail);

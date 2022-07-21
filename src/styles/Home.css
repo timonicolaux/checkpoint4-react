@@ -49,3 +49,12 @@
   width: 50%;
   margin-bottom: 20px;
 }
+
+@media screen and (min-width: 1000px) {
+  .home-title-div {
+    padding: 50px;
+  }
+  .top-recettes {
+    padding: 75px;
+  }
+}

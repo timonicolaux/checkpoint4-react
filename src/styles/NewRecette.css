@@ -1,7 +1,7 @@
 .form-elements {
   background-color: #d9d9d9;
   width: 90%;
-  height: 500px;
+  height: 600px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
@@ -70,7 +70,7 @@ textarea {
 }
 
 .input-div input {
-  width: 300px;
+  min-width: 300px;
 }
 
 .label {
@@ -99,4 +99,25 @@ textarea {
   padding: 10px;
   cursor: pointer;
   background-color: #7c7676;
+}
+
+@media screen and (min-width: 1000px) {
+  .form-elements {
+    height: 850px;
+    width: 100%;
+    margin: auto;
+  }
+
+  textarea {
+    width: 800px;
+    height: 200px;
+  }
+
+  input {
+    width: 800px;
+  }
+
+  .submitBtn {
+    margin-left: 50%;
+  }
 }

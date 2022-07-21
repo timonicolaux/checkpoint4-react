@@ -1,0 +1,123 @@
+.form-elements {
+  background-color: #d9d9d9;
+  width: 90%;
+  height: 600px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.title-recette,
+.ingredients,
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 110%;
+  margin-left: -25px;
+}
+
+.add-btn,
+.remove-btn {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  height: 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: rgb(20, 139, 20);
+}
+
+.remove-btn {
+  background-color: rgb(247, 56, 56);
+}
+
+input {
+  height: 30px;
+  width: 70%;
+  border: none;
+  border-radius: 0.4rem;
+  font-family: var(--main-font1);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+textarea {
+  border: none;
+  border-radius: 0.4rem;
+  width: 300px;
+  height: 150px;
+  padding-left: 10px;
+  padding: 10px;
+  font-family: var(--main-font1);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.input-div input {
+  min-width: 300px;
+}
+
+.label {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.ingredient-input,
+.title-input {
+  padding-left: 10px;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #7c7676;
+}
+
+@media screen and (min-width: 1000px) {
+  .form-elements {
+    height: 850px;
+    width: 100%;
+    margin: auto;
+  }
+
+  textarea {
+    width: 800px;
+    height: 200px;
+  }
+
+  input {
+    width: 800px;
+  }
+
+  .submitBtn {
+    margin-left: 50%;
+  }
+}

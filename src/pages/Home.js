@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../styles/Home.css";
 import Vegetables from "../assets/vegetables.jpg";
+import RecetteSummary from "../components/RecetteSummary";
+import RecetteDetail from "../components/RecetteDetail";
 
 const Home = () => {
+  const [recettes, getRecettes] = useState([]);
+  const [displayDetail, setDisplayDetail] = useState(false);
+  const [details, setDetails] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/recettes")
+      .then((result) => result.data)
+      .then((data) => {
+        getRecettes(data);
+      })
+      .catch(() => console.log("get route not working"));
+  }, [recettes]);
+
   return (
     <div className="main">
-      {/* <div className="vegetables-img"></div> */}
+      {displayDetail ? (
+        <RecetteDetail
+          closePopup={() => setDisplayDetail(!displayDetail)}
+          details={details}
+        />
+      ) : (
+        ""
+      )}
       <div>
         <img src={Vegetables} alt="vegetables-img" className="vegetables-img" />
       </div>
@@ -17,7 +41,22 @@ const Home = () => {
           </h2>
         </div>
         <div className="top-recettes-div">
-          <h2 className="top-recettes">NOTRE TOP RECETTES</h2>
+          <h2 className="top-recettes">NOTRE SELECTION</h2>
+        </div>
+        <div className="selection-div">
+          {recettes.slice(0, 2).map((data) => (
+            <div
+              onClick={() => {
+                setDisplayDetail(!displayDetail);
+                setDetails(data);
+              }}
+              style={{ cursor: "pointer" }}
+              key={data.titre}
+              className="single-recette"
+            >
+              <RecetteSummary titre={data.titre} image={data.imagerecette} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

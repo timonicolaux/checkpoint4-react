@@ -1,3 +1,61 @@
 .main {
-  background-color: cadetblue;
+  background-color: white;
+  font-family: var(--main-font1);
+  margin-bottom: 70px;
+}
+
+.vegetables-img {
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+}
+
+.home-title-div {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.home-title {
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+  text-align: center;
+}
+
+.top-recettes {
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.selection-div {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 100%;
+}
+
+.single-recette {
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1000px) {
+  .home-title-div {
+    padding: 50px;
+  }
+  .top-recettes {
+    padding: 75px;
+  }
 }

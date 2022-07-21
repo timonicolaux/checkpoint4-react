@@ -25,11 +25,48 @@
   margin-top: 10px;
   padding-bottom: 10px;
   height: 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: rgb(20, 139, 20);
+}
+
+.remove-btn {
+  background-color: rgb(247, 56, 56);
 }
 
 input {
-  height: 20px;
+  height: 30px;
   width: 70%;
+  border: none;
+  border-radius: 0.4rem;
+  font-family: var(--main-font1);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+textarea {
+  border: none;
+  border-radius: 0.4rem;
+  width: 300px;
+  height: 150px;
+  padding-left: 10px;
+  padding: 10px;
+  font-family: var(--main-font1);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .input-div input {
@@ -48,13 +85,18 @@ input {
   padding-left: 10px;
 }
 
-.step-input {
-  width: 250px;
-  height: 120px;
-  padding-left: 10px;
-}
-
 .submitBtn {
   margin-top: 20px;
   margin-bottom: 50px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #7c7676;
 }

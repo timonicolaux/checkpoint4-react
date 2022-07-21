@@ -178,7 +178,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="remove-btn"
                       >
-                        <span>x</span>
+                        Supprimer
                       </button>
                     )}
 
@@ -189,7 +189,7 @@ const NouvelleRecette = () => {
                           type="button"
                           className="add-btn"
                         >
-                          <span>+</span>
+                          Ajouter
                         </button>
                       )}
                   </div>
@@ -222,7 +222,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="remove-btn"
                       >
-                        <span>x</span>
+                        <span>Supprimer</span>
                       </button>
                     )}
 
@@ -232,7 +232,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="add-btn"
                       >
-                        <span>+</span>
+                        <span>Ajouter</span>
                       </button>
                     )}
                   </div>

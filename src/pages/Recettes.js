@@ -67,6 +67,8 @@ const Recettes = () => {
                     setDetails(data);
                   }}
                   style={{ cursor: "pointer" }}
+                  index={data.titre}
+                  className="single-recette"
                 >
                   <RecetteSummary
                     titre={data.titre}
@@ -94,6 +96,8 @@ const Recettes = () => {
                     setDetails(data);
                   }}
                   style={{ cursor: "pointer" }}
+                  key={data.titre}
+                  className="single-recette"
                 >
                   <RecetteSummary
                     titre={data.titre}
@@ -122,6 +126,8 @@ const Recettes = () => {
                       setDetails(data);
                     }}
                     style={{ cursor: "pointer" }}
+                    key={data.titre}
+                    className="single-recette"
                   >
                     <RecetteSummary
                       titre={data.titre}

@@ -45,5 +45,12 @@
   text-align: center;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin: auto;
+  width: 100%;
+}
+
+.single-recette {
+  width: 50%;
+  margin-bottom: 20px;
 }

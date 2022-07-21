@@ -1,22 +1,19 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "../styles/NewRecette.css";
-import { v4 as uuidv4 } from "uuid";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const NouvelleRecette = () => {
-  const [ingredientList, setIngredientList] = useState([
-    { id: uuidv4(), ingredient: "" },
-  ]);
-  const [stepList, setStepList] = useState([{ id: uuidv4(), step: "" }]);
+  const [ingredientList, setIngredientList] = useState([{}]);
+  const [stepList, setStepList] = useState([{}]);
   const navigate = useNavigate();
   const [titleForm, setTitleForm] = useState("");
   const [categoryForm, setCategoryForm] = useState("Entree");
   const [imageForm, setImageForm] = useState("");
 
   const addIngredient = () => {
-    setIngredientList([...ingredientList, { id: uuidv4(), ingredient: "" }]);
+    setIngredientList([...ingredientList, { ingredient: "" }]);
   };
 
   const deleteIngredient = (index) => {
@@ -25,6 +22,7 @@ const NouvelleRecette = () => {
     setIngredientList(list);
   };
 
+  console.log(stepList);
   const addStep = () => {
     setStepList([...stepList, { step: "" }]);
   };
@@ -34,9 +32,6 @@ const NouvelleRecette = () => {
     list.splice(index, 1);
     setStepList(list);
   };
-
-  console.log(ingredientList[0]["ingredient1"]);
-  console.log(titleForm);
 
   const handleChangeIngredient = (index, event) => {
     const newIngredient = ingredientList.map((i) => {
@@ -76,21 +71,21 @@ const NouvelleRecette = () => {
         ingredient12: ingredientList[0]["ingredient12"] || null,
         ingredient13: ingredientList[0]["ingredient13"] || null,
         ingredient14: ingredientList[0]["ingredient14"] || null,
-        etape0: stepList[0]["step0"] || null,
-        etape1: stepList[0]["step1"] || null,
-        etape2: stepList[0]["step2"] || null,
-        etape3: stepList[0]["step3"] || null,
-        etape4: stepList[0]["step4"] || null,
-        etape5: stepList[0]["step5"] || null,
-        etape6: stepList[0]["step6"] || null,
-        etape7: stepList[0]["step7"] || null,
-        etape8: stepList[0]["step8"] || null,
-        etape9: stepList[0]["step9"] || null,
-        etape10: stepList[0]["step10"] || null,
-        etape11: stepList[0]["step11"] || null,
-        etape12: stepList[0]["step12"] || null,
-        etape13: stepList[0]["step13"] || null,
-        etape14: stepList[0]["step14"] || null,
+        etape0: stepList[0]["etape0"] || null,
+        etape1: stepList[0]["etape1"] || null,
+        etape2: stepList[0]["etape2"] || null,
+        etape3: stepList[0]["etape3"] || null,
+        etape4: stepList[0]["etape4"] || null,
+        etape5: stepList[0]["etape5"] || null,
+        etape6: stepList[0]["etape6"] || null,
+        etape7: stepList[0]["etape7"] || null,
+        etape8: stepList[0]["etape8"] || null,
+        etape9: stepList[0]["etape9"] || null,
+        etape10: stepList[0]["etape10"] || null,
+        etape11: stepList[0]["etape11"] || null,
+        etape12: stepList[0]["etape12"] || null,
+        etape13: stepList[0]["etape13"] || null,
+        etape14: stepList[0]["etape14"] || null,
         imagerecette: imageForm,
       })
       .then(() => {
@@ -103,8 +98,8 @@ const NouvelleRecette = () => {
       .finally(
         setTitleForm(""),
         setCategoryForm("Entree"),
-        setIngredientList([{ id: uuidv4(), ingredient: "" }]),
-        setStepList([{ id: uuidv4(), step: "" }]),
+        setIngredientList([{}]),
+        setStepList([{}]),
         setImageForm("")
       );
   };

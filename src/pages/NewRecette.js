@@ -2,13 +2,15 @@ import axios from "axios";
 import React, { useState } from "react";
 import "../styles/NewRecette.css";
 import { v4 as uuidv4 } from "uuid";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const NouvelleRecette = () => {
   const [ingredientList, setIngredientList] = useState([
     { id: uuidv4(), ingredient: "" },
   ]);
   const [stepList, setStepList] = useState([{ id: uuidv4(), step: "" }]);
-
+  const navigate = useNavigate();
   const [titleForm, setTitleForm] = useState("");
   const [categoryForm, setCategoryForm] = useState("Entree");
   const [imageForm, setImageForm] = useState("");
@@ -91,12 +93,25 @@ const NouvelleRecette = () => {
         etape14: stepList[0]["step14"] || null,
         imagerecette: imageForm,
       })
-      .then(() => console.log("Recette envoyée !"))
-      .catch((err) => console.log(err.response.data));
+      .then(() => {
+        toast.success("Recette envoyée !");
+        setTimeout(() => {
+          navigate("/recettes");
+        }, 2000);
+      })
+      .catch(() => toast.error("Une erreur est survenue"))
+      .finally(
+        setTitleForm(""),
+        setCategoryForm("Entree"),
+        setIngredientList([{ id: uuidv4(), ingredient: "" }]),
+        setStepList([{ id: uuidv4(), step: "" }]),
+        setImageForm("")
+      );
   };
 
   return (
     <div className="main">
+      <Toaster position="bottom-center" />
       <div>
         <h2 className="description-title">
           Une idée de recette ? Ajoutez-votre recette en complétant les champs

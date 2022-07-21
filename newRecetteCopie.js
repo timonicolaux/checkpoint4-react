@@ -10,7 +10,9 @@ const NouvelleRecette = () => {
   const [stepList, setStepList] = useState([{ id: uuidv4(), step: "" }]);
 
   const [titleForm, setTitleForm] = useState("");
-  const [categoryForm, setCategoryForm] = useState("Entree");
+  const [categoryForm, setCategoryForm] = useState("");
+  // const [ingredientForm, setIngredientForm] = useState([{ ingredient: "" }]);
+  // const [etapeForm, setEtapeForm] = useState([]);
   const [imageForm, setImageForm] = useState("");
 
   const addIngredient = () => {
@@ -33,67 +35,78 @@ const NouvelleRecette = () => {
     setStepList(list);
   };
 
-  console.log(ingredientList[0]["ingredient1"]);
-  console.log(titleForm);
+  // const handleChangeIngredient = (index, event) => {
+  //   const values = [...ingredientList];
+  //   values[index][event.target.name] = event.target.value;
+  //   setIngredientList(values);
+  // };
+
+  console.log(ingredientList);
 
   const handleChangeIngredient = (index, event) => {
     const newIngredient = ingredientList.map((i) => {
-      i[event.target.name] = event.target.value;
+      if (index === i.id) {
+        i[event.target.name] = event.target.value;
+      }
       return i;
     });
     setIngredientList(newIngredient);
+    console.log(ingredientList[0].ingredient);
   };
 
   const handleChangeStep = (index, event) => {
     const newStep = stepList.map((i) => {
-      i[event.target.name] = event.target.value;
+      if (index === i.id) {
+        i[event.target.name] = event.target.value;
+      }
       return i;
     });
     setStepList(newStep);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post("http://localhost:4000/recettes", {
-        titre: titleForm,
-        categorie: categoryForm,
-        ingredient0: ingredientList[0]["ingredient0"] || null,
-        ingredient1: ingredientList[0]["ingredient1"] || null,
-        ingredient2: ingredientList[0]["ingredient2"] || null,
-        ingredient3: ingredientList[0]["ingredient3"] || null,
-        ingredient4: ingredientList[0]["ingredient4"] || null,
-        ingredient5: ingredientList[0]["ingredient5"] || null,
-        ingredient6: ingredientList[0]["ingredient6"] || null,
-        ingredient7: ingredientList[0]["ingredient7"] || null,
-        ingredient8: ingredientList[0]["ingredient8"] || null,
-        ingredient9: ingredientList[0]["ingredient9"] || null,
-        ingredient10: ingredientList[0]["ingredient10"] || null,
-        ingredient11: ingredientList[0]["ingredient11"] || null,
-        ingredient12: ingredientList[0]["ingredient12"] || null,
-        ingredient13: ingredientList[0]["ingredient13"] || null,
-        ingredient14: ingredientList[0]["ingredient14"] || null,
-        etape0: stepList[0]["step0"] || null,
-        etape1: stepList[0]["step1"] || null,
-        etape2: stepList[0]["step2"] || null,
-        etape3: stepList[0]["step3"] || null,
-        etape4: stepList[0]["step4"] || null,
-        etape5: stepList[0]["step5"] || null,
-        etape6: stepList[0]["step6"] || null,
-        etape7: stepList[0]["step7"] || null,
-        etape8: stepList[0]["step8"] || null,
-        etape9: stepList[0]["step9"] || null,
-        etape10: stepList[0]["step10"] || null,
-        etape11: stepList[0]["step11"] || null,
-        etape12: stepList[0]["step12"] || null,
-        etape13: stepList[0]["step13"] || null,
-        etape14: stepList[0]["step14"] || null,
-        imagerecette: imageForm,
-      })
-      .then(() => console.log("Recette envoyée !"))
-      .catch((err) => console.log(err.response.data));
+    e.preventdefault();
+    console.log(ingredientList);
   };
+
+  axios
+    .post("http://localhost:4000/recettes", {
+      titre: titleForm,
+      categorie: categoryForm,
+      ingredient0: ingredientList[0].ingredient,
+      ingredient1: ingredientList[0],
+      ingredient2: ingredientList[0],
+      ingredient3: ingredientList[0],
+      ingredient4: ingredientList[0],
+      ingredient5: ingredientList[0],
+      ingredient6: ingredientList[0],
+      ingredient7: ingredientList[0],
+      ingredient8: ingredientList[0],
+      ingredient9: ingredientList[0],
+      ingredient10: ingredientList[0],
+      ingredient11: ingredientList[0],
+      ingredient12: ingredientList[0],
+      ingredient13: ingredientList[0],
+      ingredient14: ingredientList[0],
+      etape0: stepList[1],
+      etape1: stepList[1],
+      etape2: stepList[1],
+      etape3: stepList[1],
+      etape4: stepList[1],
+      etape5: stepList[1],
+      etape6: stepList[1],
+      etape7: stepList[1],
+      etape8: stepList[1],
+      etape9: stepList[1],
+      etape10: stepList[1],
+      etape11: stepList[1],
+      etape12: stepList[1],
+      etape13: stepList[1],
+      etape14: stepList[1],
+      imagerecette: imageForm,
+    })
+    .then(() => console.log("Recette envoyée !"))
+    .catch((err) => console.log(err.response.data));
 
   return (
     <div className="main">
@@ -104,7 +117,7 @@ const NouvelleRecette = () => {
         </h2>
       </div>
       <div className="form-div">
-        <form onSubmit={handleSubmit}>
+        <form action="post" onSubmit={handleSubmit}>
           <div className="form-elements">
             <div className="title-recette">
               <label className="label">TITRE DE LA RECETTE</label>
@@ -234,7 +247,7 @@ const NouvelleRecette = () => {
                 placeholder="ex: https://super-image.jpg"
                 value={imageForm}
                 onChange={(e) => setImageForm(e.target.value)}
-                maxLength="300"
+                maxLength="60"
               />
             </div>
             <button type="submit" className="submitBtn" onClick={handleSubmit}>

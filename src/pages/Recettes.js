@@ -59,7 +59,7 @@ const Recettes = () => {
       <div className="entrees-div">
         {category === "entrées" || category === "all" || category === ""
           ? recettes
-              .filter((category) => category.categorie === "Entrée")
+              .filter((category) => category.categorie === "Entree")
               .map((data) => (
                 <div
                   onClick={() => {

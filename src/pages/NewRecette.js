@@ -53,7 +53,7 @@ const NouvelleRecette = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:4000/recettes", {
+      .post("jecuisine-8mojtmujd-timonicolaux.vercel.app/recettes", {
         titre: titleForm,
         categorie: categoryForm,
         ingredient0: ingredientList[0]["ingredient0"] || null,

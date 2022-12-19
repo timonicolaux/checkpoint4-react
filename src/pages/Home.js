@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("jecuisine-8mojtmujd-timonicolaux.vercel.app/recettes")
+      .get("https://jecuisine-api.vercel.app/recettes")
       .then((result) => result.data)
       .then((data) => {
         getRecettes(data);

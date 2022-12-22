@@ -51,7 +51,9 @@ const NouvelleRecette = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!titleForm.length) {
-      return toast.error("Veuillez saisir les informations obligatoires");
+      return toast.error(
+        "Veuillez saisir au moins un titre, un ingrédient et une étape"
+      );
     }
 
     axios

@@ -64,8 +64,13 @@ const Home = () => {
             sur notre site
           </h2>
         </div>
-        <div className="top-recettes-div">
-          <h2 className="top-recettes">RECETTES ALEATOIRES</h2>
+        <div className="random-recettes-div">
+          <h2 className="random-recettes">RECETTES ALEATOIRES</h2>
+        </div>
+        <div className="reload-btn-container">
+          <button className="reload-btn" onClick={getData}>
+            Changer
+          </button>
         </div>
         <div className="selection-div">
           {randomRecettes.map((data) => (

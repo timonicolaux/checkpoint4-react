@@ -50,6 +50,11 @@ header {
 
 @media screen and (max-width: 500px) {
   .li-nav {
-    font-size: 20px;
+    font-size: 18px;
+    text-decoration: underline 2px #968f8f;
+    text-underline-offset: 2px;
+  }
+  .li-nav:hover {
+    text-decoration: underline 2px #e82d2d;
   }
 }

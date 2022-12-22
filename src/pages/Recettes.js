@@ -11,6 +11,7 @@ const Recettes = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
+    console.log("coucou");
     axios
       .get("https://jecuisine-api.vercel.app/recettes")
       .then((result) => result.data)
@@ -18,7 +19,7 @@ const Recettes = () => {
         getRecettes(data);
       })
       .catch(() => console.log("get route not working"));
-  }, [recettes]);
+  }, []);
 
   return (
     <div className="main">

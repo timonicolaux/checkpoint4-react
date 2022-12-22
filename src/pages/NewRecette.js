@@ -5,9 +5,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const NouvelleRecette = () => {
+  const navigate = useNavigate();
   const [ingredientList, setIngredientList] = useState([{}]);
   const [stepList, setStepList] = useState([{}]);
-  const navigate = useNavigate();
   const [titleForm, setTitleForm] = useState("");
   const [categoryForm, setCategoryForm] = useState("Entree");
   const [imageForm, setImageForm] = useState("");
@@ -22,7 +22,6 @@ const NouvelleRecette = () => {
     setIngredientList(list);
   };
 
-  console.log(stepList);
   const addStep = () => {
     setStepList([...stepList, { step: "" }]);
   };
@@ -51,6 +50,9 @@ const NouvelleRecette = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!titleForm.length) {
+      return toast.error("Veuillez saisir les informations obligatoires");
+    }
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/recettes`, {
@@ -113,9 +115,9 @@ const NouvelleRecette = () => {
           ci-dessous
         </h2>
       </div>
-      <div className="form-div">
-        <form onSubmit={handleSubmit}>
-          <div className="form-elements">
+      <div className="form-elements">
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
             <div className="title-recette">
               <label className="label">TITRE DE LA RECETTE</label>
               <input
@@ -248,11 +250,17 @@ const NouvelleRecette = () => {
                 required
               />
             </div>
-            <button type="submit" className="submitBtn" onClick={handleSubmit}>
-              ENVOYER
-            </button>
-          </div>
-        </form>
+            <div className="submitBtnContainer">
+              <button
+                type="submit"
+                className="submitBtn"
+                onClick={handleSubmit}
+              >
+                ENVOYER
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

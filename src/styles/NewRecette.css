@@ -1,13 +1,16 @@
 .form-elements {
   background-color: #d9d9d9;
   width: 90%;
-  height: 600px;
-  margin-left: 20px;
-  margin-right: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.form-container {
+  margin-top: 50px;
 }
 
 .title-recette,
@@ -15,9 +18,9 @@
 .ingredient {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 110%;
-  margin-left: -25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
 }
 
 .add-btn,
@@ -61,7 +64,7 @@ textarea {
   border-radius: 0.4rem;
   width: 300px;
   height: 150px;
-  padding-left: 10px;
+
   padding: 10px;
   font-family: var(--main-font1);
   font-size: 14px;
@@ -85,6 +88,11 @@ textarea {
   padding-left: 10px;
 }
 
+.submitBtnContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .submitBtn {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -102,22 +110,11 @@ textarea {
 }
 
 @media screen and (min-width: 1000px) {
-  .form-elements {
-    height: 850px;
-    width: 100%;
-    margin: auto;
-  }
-
   textarea {
     width: 800px;
     height: 200px;
   }
-
   input {
     width: 800px;
-  }
-
-  .submitBtn {
-    margin-left: 50%;
   }
 }

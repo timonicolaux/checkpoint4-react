@@ -13,6 +13,17 @@
   margin-top: 50px;
 }
 
+.category-input {
+  height: 30px;
+  width: 235px;
+  border: none;
+  border-radius: 0.4rem;
+  font-family: var(--main-font1);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
 .title-recette,
 .ingredients,
 .ingredient {

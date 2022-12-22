@@ -54,9 +54,7 @@ const Home = () => {
       ) : (
         ""
       )}
-      <div>
-        <img src={Vegetables} alt="vegetables-img" className="vegetables-img" />
-      </div>
+      <div className="vegetables-img-container" />
       <div className="main-section">
         <div className="home-title-div">
           <h2 className="home-title">
@@ -64,8 +62,13 @@ const Home = () => {
             sur notre site
           </h2>
         </div>
-        <div className="top-recettes-div">
-          <h2 className="top-recettes">RECETTES ALEATOIRES</h2>
+        <div className="random-recettes-div">
+          <h2 className="random-recettes">RECETTES ALEATOIRES</h2>
+        </div>
+        <div className="reload-btn-container">
+          <button className="reload-btn" onClick={getData}>
+            Changer
+          </button>
         </div>
         <div className="selection-div">
           {randomRecettes.map((data) => (

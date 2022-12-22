@@ -4,13 +4,12 @@
   margin-bottom: 70px;
 }
 
-.vegetables-img {
-  text-align: center;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+.vegetables-img-container {
+  background-image: url("../assets/vegetables.jpg");
+  height: 600px;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .home-title-div {
@@ -28,13 +27,13 @@
   text-align: center;
 }
 
-.top-recettes {
+.random-recettes {
   font-weight: 600;
   font-size: 20px;
   letter-spacing: 1px;
   padding-bottom: 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .selection-div {
@@ -51,11 +50,40 @@
   margin-bottom: 20px;
 }
 
+.reload-btn-container {
+  display: flex;
+}
+
+.reload-btn {
+  margin-bottom: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 1000px) {
   .home-title-div {
     padding: 50px;
   }
-  .top-recettes {
+  .random-recettes {
+    margin-bottom: -30px;
     padding: 75px;
+  }
+  .reload-btn {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .vegetables-img-container {
+    height: 300px;
   }
 }

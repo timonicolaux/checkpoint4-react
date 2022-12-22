@@ -5,11 +5,11 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const NouvelleRecette = () => {
+  const navigate = useNavigate();
   const [ingredientList, setIngredientList] = useState([{}]);
   const [stepList, setStepList] = useState([{}]);
-  const navigate = useNavigate();
   const [titleForm, setTitleForm] = useState("");
-  const [categoryForm, setCategoryForm] = useState("Entree");
+  const [categoryForm, setCategoryForm] = useState("");
   const [imageForm, setImageForm] = useState("");
 
   const addIngredient = () => {
@@ -22,7 +22,6 @@ const NouvelleRecette = () => {
     setIngredientList(list);
   };
 
-  console.log(stepList);
   const addStep = () => {
     setStepList([...stepList, { step: "" }]);
   };
@@ -51,9 +50,14 @@ const NouvelleRecette = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!titleForm.length || categoryForm === "") {
+      return toast.error(
+        "Veuillez saisir au moins un titre, une catégorie, un ingrédient et une étape"
+      );
+    }
 
     axios
-      .post("https://jecuisine-api.vercel.app/recettes", {
+      .post(`${process.env.REACT_APP_API_URL}/recettes`, {
         titre: titleForm,
         categorie: categoryForm,
         ingredient0: ingredientList[0]["ingredient0"] || null,
@@ -113,9 +117,9 @@ const NouvelleRecette = () => {
           ci-dessous
         </h2>
       </div>
-      <div className="form-div">
-        <form onSubmit={handleSubmit}>
-          <div className="form-elements">
+      <div className="form-elements">
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
             <div className="title-recette">
               <label className="label">TITRE DE LA RECETTE</label>
               <input
@@ -140,6 +144,7 @@ const NouvelleRecette = () => {
                 onChange={(e) => setCategoryForm(e.target.value)}
                 required
               >
+                <option value=""></option>
                 <option value="Entree">Entrée</option>
                 <option value="Plat">Plat</option>
                 <option value="Dessert">Dessert</option>
@@ -248,11 +253,17 @@ const NouvelleRecette = () => {
                 required
               />
             </div>
-            <button type="submit" className="submitBtn" onClick={handleSubmit}>
-              ENVOYER
-            </button>
-          </div>
-        </form>
+            <div className="submitBtnContainer">
+              <button
+                type="submit"
+                className="submitBtn"
+                onClick={handleSubmit}
+              >
+                ENVOYER
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

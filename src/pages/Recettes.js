@@ -5,23 +5,35 @@ import RecetteDetail from "../components/RecetteDetail";
 import "../styles/Recettes.css";
 
 const Recettes = () => {
-  const [recettes, getRecettes] = useState([]);
+  const [recettes, setRecettes] = useState([]);
   const [displayDetail, setDisplayDetail] = useState(false);
   const [category, setCategory] = useState("");
   const [details, setDetails] = useState([]);
 
+  const getData = async () => {
+    try {
+      const result = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recettes`
+      );
+      if (result) {
+        return setRecettes(result.data);
+      } else return "no data";
+    } catch (error) {
+      console.log("get route not working");
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get("https://jecuisine-api.vercel.app/recettes")
-      .then((result) => result.data)
-      .then((data) => {
-        getRecettes(data);
-      })
-      .catch(() => console.log("get route not working"));
-  }, [recettes]);
+    getData();
+  }, []);
 
   return (
-    <div className="main">
+    <div
+      className="main"
+      onClick={() => {
+        displayDetail && setDisplayDetail(false);
+      }}
+    >
       {displayDetail ? (
         <RecetteDetail
           closePopup={() => setDisplayDetail(!displayDetail)}

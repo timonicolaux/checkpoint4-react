@@ -53,7 +53,7 @@ const NouvelleRecette = () => {
     e.preventDefault();
 
     axios
-      .post("https://jecuisine-api.vercel.app/recettes", {
+      .post(`${process.env.REACT_APP_API_URL}/recettes`, {
         titre: titleForm,
         categorie: categoryForm,
         ingredient0: ingredientList[0]["ingredient0"] || null,

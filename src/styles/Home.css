@@ -4,13 +4,12 @@
   margin-bottom: 70px;
 }
 
-.vegetables-img {
-  text-align: center;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+.vegetables-img-container {
+  background-image: url("../assets/vegetables.jpg");
+  height: 600px;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .home-title-div {
@@ -80,5 +79,11 @@
   }
   .reload-btn {
     margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .vegetables-img-container {
+    height: 300px;
   }
 }

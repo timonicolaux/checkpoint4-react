@@ -54,9 +54,7 @@ const Home = () => {
       ) : (
         ""
       )}
-      <div>
-        <img src={Vegetables} alt="vegetables-img" className="vegetables-img" />
-      </div>
+      <div className="vegetables-img-container" />
       <div className="main-section">
         <div className="home-title-div">
           <h2 className="home-title">

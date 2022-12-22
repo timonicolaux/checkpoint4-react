@@ -9,7 +9,7 @@ const NouvelleRecette = () => {
   const [ingredientList, setIngredientList] = useState([{}]);
   const [stepList, setStepList] = useState([{}]);
   const [titleForm, setTitleForm] = useState("");
-  const [categoryForm, setCategoryForm] = useState("Entree");
+  const [categoryForm, setCategoryForm] = useState("");
   const [imageForm, setImageForm] = useState("");
 
   const addIngredient = () => {
@@ -50,9 +50,9 @@ const NouvelleRecette = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!titleForm.length) {
+    if (!titleForm.length || categoryForm === "") {
       return toast.error(
-        "Veuillez saisir au moins un titre, un ingrédient et une étape"
+        "Veuillez saisir au moins un titre, une catégorie, un ingrédient et une étape"
       );
     }
 
@@ -144,6 +144,7 @@ const NouvelleRecette = () => {
                 onChange={(e) => setCategoryForm(e.target.value)}
                 required
               >
+                <option value=""></option>
                 <option value="Entree">Entrée</option>
                 <option value="Plat">Plat</option>
                 <option value="Dessert">Dessert</option>

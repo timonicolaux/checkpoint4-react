@@ -25,6 +25,7 @@ const Recettes = () => {
 
   useEffect(() => {
     getData();
+    console.log("test");
   }, []);
 
   return (

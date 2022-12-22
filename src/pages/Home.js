@@ -6,22 +6,46 @@ import RecetteSummary from "../components/RecetteSummary";
 import RecetteDetail from "../components/RecetteDetail";
 
 const Home = () => {
-  const [recettes, getRecettes] = useState([]);
+  const [recettes, setRecettes] = useState([]);
   const [displayDetail, setDisplayDetail] = useState(false);
   const [details, setDetails] = useState([]);
+  const [randomRecettes, setRandomRecettes] = useState([]);
+
+  const getData = async () => {
+    try {
+      const result = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recettes`
+      );
+      if (result) {
+        setRecettes(result.data);
+        const getTwoRecettes = await getRandomRecettes(result.data);
+        setRandomRecettes(getTwoRecettes);
+        return;
+      } else return "no data";
+    } catch (error) {
+      console.log("get route not working");
+    }
+  };
+
+  const getRandomRecettes = async (data) => {
+    const randomItem1 = data[Math.floor(Math.random() * data.length)];
+    const randomItem2 = data[Math.floor(Math.random() * data.length)];
+    const randomItems = [randomItem1, randomItem2];
+    if (randomItem1.id !== randomItem2.id) return randomItems;
+    else return getRandomRecettes();
+  };
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/recettes`)
-      .then((result) => result.data)
-      .then((data) => {
-        getRecettes(data);
-      })
-      .catch(() => console.log("get route not working"));
-  }, [recettes]);
+    getData();
+  }, []);
 
   return (
-    <div className="main">
+    <div
+      className="main"
+      onClick={() => {
+        displayDetail && setDisplayDetail(false);
+      }}
+    >
       {displayDetail ? (
         <RecetteDetail
           closePopup={() => setDisplayDetail(!displayDetail)}
@@ -41,10 +65,10 @@ const Home = () => {
           </h2>
         </div>
         <div className="top-recettes-div">
-          <h2 className="top-recettes">NOTRE SELECTION</h2>
+          <h2 className="top-recettes">RECETTES ALEATOIRES</h2>
         </div>
         <div className="selection-div">
-          {recettes.slice(0, 2).map((data) => (
+          {randomRecettes.map((data) => (
             <div
               onClick={() => {
                 setDisplayDetail(!displayDetail);

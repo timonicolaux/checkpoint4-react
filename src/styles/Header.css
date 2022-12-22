@@ -1,15 +1,15 @@
 header {
   font-family: var(--main-font1);
   background-color: #d9d9d9;
-  height: 150px;
+  height: 250px;
 }
 
 .main-title {
-  padding-top: 30px;
+  padding-top: 50px;
   text-align: center;
   font-weight: 400;
-  font-size: 35px;
-  letter-spacing: 1px;
+  font-size: 50px;
+  letter-spacing: 10px;
 }
 
 .main-title b {
@@ -18,7 +18,7 @@ header {
 }
 
 .nav {
-  margin-top: 35px;
+  margin-top: 80px;
 }
 
 .ul-nav {
@@ -34,6 +34,11 @@ header {
   padding-right: 10px;
 }
 
+.li-nav {
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
 .link-style {
   text-decoration: none;
   color: black;
@@ -41,4 +46,10 @@ header {
 
 .link-style:hover {
   color: #e82d2d;
+}
+
+@media screen and (max-width: 500px) {
+  .li-nav {
+    font-size: 20px;
+  }
 }

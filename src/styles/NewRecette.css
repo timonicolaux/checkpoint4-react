@@ -41,11 +41,27 @@
 }
 
 .add-btn {
-  background-color: rgb(20, 139, 20);
+  background-color: var(--green);
+  box-shadow: var(--button-boxShadow);
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  color: white;
+  filter: brightness(110%);
+  transform: translateX(1px) translateY(1px);
 }
 
 .remove-btn {
-  background-color: rgb(247, 56, 56);
+  background-color: var(--red);
+  box-shadow: var(--button-boxShadow);
+  transition: 0.3s ease;
+}
+
+.remove-btn:hover {
+  color: white;
+  filter: brightness(110%);
+  transform: translateX(1px) translateY(1px);
 }
 
 input {
@@ -64,7 +80,6 @@ textarea {
   border-radius: 0.4rem;
   width: 300px;
   height: 150px;
-
   padding: 10px;
   font-family: var(--main-font1);
   font-size: 14px;
@@ -107,6 +122,15 @@ textarea {
   padding: 10px;
   cursor: pointer;
   background-color: #7c7676;
+  transition: 0.3s ease;
+  box-shadow: var(--button-boxShadow);
+}
+
+.submitBtn:hover {
+  background-color: var(--green);
+  color: white;
+  filter: brightness(110%);
+  transform: translateX(1px) translateY(1px);
 }
 
 @media screen and (min-width: 1000px) {

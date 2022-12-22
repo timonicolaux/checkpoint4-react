@@ -3,4 +3,7 @@
   padding: 0 auto;
   --main-font1: "Work Sans", sans-serif;
   --main-font2: "Poppins", sans-serif;
+  --green: rgb(20, 139, 20);
+  --red: rgb(247, 56, 56);
+  --button-boxShadow: 1px 2px 2px rgb(85, 83, 83);
 }

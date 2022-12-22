@@ -3,7 +3,6 @@ import "../styles/RecetteDetail.css";
 import ClosePopup from "../assets/closepopup.png";
 
 const RecetteDetail = ({ closePopup, details }) => {
-  console.log(details);
   return (
     <div className="popup">
       <div className="popup-container">

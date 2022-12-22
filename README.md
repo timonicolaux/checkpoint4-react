@@ -1,3 +1,6 @@
+This is a little full-stack project, a food application where you can visualise and add new meal recipes.
+Front-end (React) and back-end (Node) are deployed on vercel and database is stored on GoogleCloud Database (mySQL).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

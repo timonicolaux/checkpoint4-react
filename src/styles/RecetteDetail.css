@@ -40,6 +40,7 @@
 
 .recette-detail-img {
   max-width: 100%;
+  border-radius: 5px;
 }
 
 .ingredient-detail-div {
@@ -76,8 +77,11 @@
   padding-top: 40px;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   .close-popup {
-    width: 4%;
+    width: 60px;
+  }
+  .recette-detail-img {
+    max-width: 500px;
   }
 }

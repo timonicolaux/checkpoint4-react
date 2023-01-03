@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Home.css";
-import Vegetables from "../assets/vegetables.jpg";
 import RecetteSummary from "../components/RecetteSummary";
 import RecetteDetail from "../components/RecetteDetail";
 

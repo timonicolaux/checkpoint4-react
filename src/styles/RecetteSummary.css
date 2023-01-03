@@ -18,6 +18,53 @@
   max-width: 150px;
 }
 
+.remove-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.remove-btn,
+.yes-btn,
+.no-btn {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  height: 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  background-color: var(--red);
+  box-shadow: var(--button-boxShadow);
+  transition: 0.3s ease;
+}
+
+.yes-btn {
+  margin: 10px;
+  background-color: var(--green);
+}
+
+.no-btn {
+  margin: 10px;
+}
+
+.remove-btn:hover {
+  color: white;
+  filter: brightness(110%);
+  transform: translateX(1px) translateY(1px);
+}
+
 @media screen and (min-width: 501px) and (max-width: 999px) {
   .recette-img {
     max-width: 300px;

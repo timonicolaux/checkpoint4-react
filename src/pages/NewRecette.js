@@ -116,6 +116,9 @@ const NouvelleRecette = () => {
           Une idée de recette ? Ajoutez-votre recette en complétant les champs
           ci-dessous
         </h2>
+        <p className="description-info">
+          (Vous aurez ensuite la possibilité de supprimer votre recette)
+        </p>
       </div>
       <div className="form-elements">
         <div className="form-container">

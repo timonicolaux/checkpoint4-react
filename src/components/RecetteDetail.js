@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/RecetteDetail.css";
 import ClosePopup from "../assets/closepopup.png";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
-const RecetteDetail = ({ closePopup, details }) => {
+const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
+  const [confirm, setConfirm] = useState(false);
+
+  const deleteRecette = async (id) => {
+    try {
+      const result = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/recettes/${id}`
+      );
+      if (result) {
+        toast.success("Recette supprimée");
+        setTimeout(() => {
+          setDisplayDetail(false);
+          getData();
+        }, 2000);
+      }
+    } catch (error) {
+      toast.error("Une erreur est survenue");
+      console.log(error);
+    }
+  };
+
   return (
     <div className="popup">
+      <Toaster position="bottom-center" />
       <div className="popup-container">
         <img
           src={ClosePopup}
@@ -158,6 +181,29 @@ const RecetteDetail = ({ closePopup, details }) => {
             </h3>
           </div>
         </div>
+        {details.id > 10 && !confirm && (
+          <div className="remove-btn-container">
+            <button className="remove-btn" onClick={() => setConfirm(true)}>
+              Supprimer
+            </button>
+          </div>
+        )}
+        {confirm && (
+          <div className="confirmation-container">
+            <p>Confirmez-vous cette action ?</p>
+            <div className="confirmation-btn-container">
+              <button
+                className="yes-btn"
+                onClick={() => deleteRecette(details.id)}
+              >
+                Oui
+              </button>
+              <button className="no-btn" onClick={() => setConfirm(false)}>
+                Non
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

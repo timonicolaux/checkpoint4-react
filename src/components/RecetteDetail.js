@@ -38,12 +38,21 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
         <div className="recette-detail">
           <h1 className="recette-detail-titre">{details.titre}</h1>
           <img
-            src={details.imagerecette}
+            src={
+              details.imagerecette === ""
+                ? "https://thumbs.dreamstime.com/b/no-image-vector-isolated-white-background-no-image-vector-illustration-isolated-156298619.jpg"
+                : details.imagerecette
+            }
             alt={details.titre}
             className="recette-detail-img"
           />
           <div className="ingredient-detail-div">
             <h2 className="ingredient-title">INGRÉDIENTS</h2>
+            <h3
+              className={details.ingredient0 != null ? "ingredient-detail" : ""}
+            >
+              {details.ingredient0}
+            </h3>
             <h3
               className={details.ingredient1 != null ? "ingredient-detail" : ""}
             >
@@ -134,6 +143,9 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
           </div>
           <div className="etape-detail-div">
             <h2 className="etape-title">ÉTAPES</h2>
+            <h3 className={details.etape0 != null ? "etape-detail" : ""}>
+              {details.etape0 != null ? `■ ` + details.etape0 : ""}
+            </h3>
             <h3 className={details.etape1 != null ? "etape-detail" : ""}>
               {details.etape1 != null ? `■ ` + details.etape1 : ""}
             </h3>

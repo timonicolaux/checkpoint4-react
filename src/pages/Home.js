@@ -80,7 +80,7 @@ const Home = () => {
           {isLoading && (
             <>
               <RecetteSummary titre="" image="" isLoading={isLoading} />
-              <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
             </>
           )}
           {randomRecettes.map((data) => (
@@ -96,7 +96,7 @@ const Home = () => {
               <RecetteSummary
                 titre={data.titre}
                 image={data.imagerecette}
-                isLoading={isLoading}
+                isLoading={false}
               />
             </div>
           ))}

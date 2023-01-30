@@ -22,12 +22,12 @@ const RecetteSummary = ({ titre, image, isLoading }) => {
       {window.innerWidth > 500 && isLoading && (
         <ContentLoader
           height="400px"
-          width="300px"
+          width="350px"
           backgroundColor="#d9d9d9"
           animate={true}
         >
-          <rect x="0" width="300px" height="300px" rx="10" ry="10" />
-          <rect x="0" y="320" width="300px" height="40px" rx="10" ry="10" />
+          <rect x="25" width="300px" height="300px" rx="10" ry="10" />
+          <rect x="25" y="320" width="300px" height="40px" rx="10" ry="10" />
         </ContentLoader>
       )}
       {window.innerWidth <= 500 && isLoading && (

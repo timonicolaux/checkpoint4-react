@@ -88,7 +88,9 @@ const Recettes = () => {
           {isLoading && (
             <>
               <RecetteSummary titre="" image="" isLoading={isLoading} />
-              <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
             </>
           )}
           {category === "entrées" || category === "all" || category === ""
@@ -107,7 +109,7 @@ const Recettes = () => {
                     <RecetteSummary
                       titre={data.titre}
                       image={data.imagerecette}
-                      isLoading={isLoading}
+                      isLoading={false}
                     />
                   </div>
                 ))
@@ -124,7 +126,9 @@ const Recettes = () => {
           {isLoading && (
             <>
               <RecetteSummary titre="" image="" isLoading={isLoading} />
-              <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
             </>
           )}
           {category === "plats" || category === "all" || category === ""
@@ -143,7 +147,7 @@ const Recettes = () => {
                     <RecetteSummary
                       titre={data.titre}
                       image={data.imagerecette}
-                      isLoading={isLoading}
+                      isLoading={false}
                     />
                   </div>
                 ))
@@ -161,7 +165,9 @@ const Recettes = () => {
             {isLoading && (
               <>
                 <RecetteSummary titre="" image="" isLoading={isLoading} />
-                <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+                <RecetteSummary titre="" image="" isLoading={isLoading} />
+                <RecetteSummary titre="" image="" isLoading={isLoading} />
+                <RecetteSummary titre="" image="" isLoading={isLoading} />
               </>
             )}
             {category === "desserts" || category === "all" || category === ""
@@ -180,7 +186,7 @@ const Recettes = () => {
                       <RecetteSummary
                         titre={data.titre}
                         image={data.imagerecette}
-                        isLoading={isLoading}
+                        isLoading={false}
                       />
                     </div>
                   ))

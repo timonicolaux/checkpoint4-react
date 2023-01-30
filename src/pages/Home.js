@@ -12,6 +12,7 @@ const Home = () => {
   const [randomRecettes, setRandomRecettes] = useState([]);
 
   const getData = async () => {
+    setRandomRecettes([]);
     setIsLoading(true);
     try {
       const result = await axios.get(

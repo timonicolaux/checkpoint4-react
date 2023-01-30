@@ -7,16 +7,19 @@ import "../styles/Recettes.css";
 const Recettes = () => {
   const [recettes, setRecettes] = useState([]);
   const [displayDetail, setDisplayDetail] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState("");
   const [details, setDetails] = useState([]);
 
   const getData = async () => {
+    setIsLoading(true);
     try {
       const result = await axios.get(
         `${process.env.REACT_APP_API_URL}/recettes`
       );
       if (result) {
-        return setRecettes(result.data);
+        setRecettes(result.data);
+        setIsLoading(false);
       } else return "no data";
     } catch (error) {
       console.log("get route not working");
@@ -24,7 +27,10 @@ const Recettes = () => {
   };
 
   useEffect(() => {
-    getData();
+    const loadingTimer = setTimeout(() => {
+      getData();
+    }, 1000);
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   return (
@@ -79,6 +85,12 @@ const Recettes = () => {
           ""
         )}
         <div className="entrees-div">
+          {isLoading && (
+            <>
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+            </>
+          )}
           {category === "entrées" || category === "all" || category === ""
             ? recettes
                 .filter((category) => category.categorie === "Entree")
@@ -95,6 +107,7 @@ const Recettes = () => {
                     <RecetteSummary
                       titre={data.titre}
                       image={data.imagerecette}
+                      isLoading={isLoading}
                     />
                   </div>
                 ))
@@ -108,6 +121,12 @@ const Recettes = () => {
           ""
         )}
         <div className="plats-div">
+          {isLoading && (
+            <>
+              <RecetteSummary titre="" image="" isLoading={isLoading} />
+              <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+            </>
+          )}
           {category === "plats" || category === "all" || category === ""
             ? recettes
                 .filter((category) => category.categorie === "Plat")
@@ -124,6 +143,7 @@ const Recettes = () => {
                     <RecetteSummary
                       titre={data.titre}
                       image={data.imagerecette}
+                      isLoading={isLoading}
                     />
                   </div>
                 ))
@@ -138,6 +158,12 @@ const Recettes = () => {
             ""
           )}
           <div className="desserts-div">
+            {isLoading && (
+              <>
+                <RecetteSummary titre="" image="" isLoading={isLoading} />
+                <RecetteSummary titre="" image="" isLoading={isLoading} />{" "}
+              </>
+            )}
             {category === "desserts" || category === "all" || category === ""
               ? recettes
                   .filter((category) => category.categorie === "Dessert")
@@ -154,6 +180,7 @@ const Recettes = () => {
                       <RecetteSummary
                         titre={data.titre}
                         image={data.imagerecette}
+                        isLoading={isLoading}
                       />
                     </div>
                   ))

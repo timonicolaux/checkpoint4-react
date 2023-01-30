@@ -20,6 +20,7 @@
   margin-top: 100px;
   overflow-y: scroll;
   border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 }
 
 .close-popup {
@@ -42,6 +43,7 @@
 .recette-detail-img {
   max-width: 100%;
   border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .ingredient-detail-div {

@@ -6,11 +6,18 @@
 
 .vegetables-img-container {
   background-image: url("../assets/vegetables.jpg");
-  height: 600px;
+  height: 400px;
+  position: absolute;
+  left: 0;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 5px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.2);
+}
+
+.main-section {
+  padding-top: 400px;
+  max-width: 1000px;
 }
 
 .home-title-div {
@@ -86,5 +93,8 @@
 @media screen and (max-width: 500px) {
   .vegetables-img-container {
     height: 300px;
+  }
+  .main-section {
+    padding-top: 320px;
   }
 }

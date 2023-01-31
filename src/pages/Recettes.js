@@ -66,7 +66,7 @@ const Recettes = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="all"></option>
+            <option value="all">Toutes les catégories</option>
             <option value="entrées">ENTRÉES</option>
             <option value="plats">PLATS</option>
             <option value="desserts">DESSERTS</option>

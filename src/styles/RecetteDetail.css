@@ -41,7 +41,11 @@
 }
 
 .recette-detail-img {
-  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 400px;
+  width: 400px;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -72,12 +76,14 @@
 }
 
 .etape-detail {
+  display: flex;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 1px;
   text-align: justify;
   text-justify: inter-character;
   padding-top: 40px;
+  justify-content: center;
 }
 
 @media screen and (min-width: 700px) {

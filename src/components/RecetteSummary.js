@@ -1,21 +1,28 @@
 import React from "react";
 import "../styles/RecetteSummary.css";
 import ContentLoader from "react-content-loader";
+import noImage from "../assets/no-image.jpeg";
 
 const RecetteSummary = ({ titre, image, isLoading }) => {
   return (
     <>
       {!isLoading && (
         <div className="recette-summary">
-          <img
-            src={
-              image === ""
-                ? "https://thumbs.dreamstime.com/b/no-image-vector-isolated-white-background-no-image-vector-illustration-isolated-156298619.jpg"
-                : image
-            }
-            alt={titre}
-            className="recette-img"
-          />
+          {image === "" ? (
+            <div
+              style={{
+                backgroundImage: `url(${noImage})`,
+              }}
+              className="recette-img"
+            ></div>
+          ) : (
+            <div
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+              className="recette-img"
+            ></div>
+          )}
           <h1 className="recette-title">{titre}</h1>
         </div>
       )}

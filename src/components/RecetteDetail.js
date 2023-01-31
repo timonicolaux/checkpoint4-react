@@ -3,6 +3,7 @@ import "../styles/RecetteDetail.css";
 import ClosePopup from "../assets/closepopup.png";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import noImage from "../assets/no-image.jpeg";
 
 const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
   const [confirm, setConfirm] = useState(false);
@@ -37,15 +38,21 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
         />
         <div className="recette-detail">
           <h1 className="recette-detail-titre">{details.titre}</h1>
-          <img
-            src={
-              details.imagerecette === ""
-                ? "https://thumbs.dreamstime.com/b/no-image-vector-isolated-white-background-no-image-vector-illustration-isolated-156298619.jpg"
-                : details.imagerecette
-            }
-            alt={details.titre}
-            className="recette-detail-img"
-          />
+          {details.imagerecette === "" ? (
+            <div
+              style={{
+                backgroundImage: `url(${noImage})`,
+              }}
+              className="recette-detail-img"
+            ></div>
+          ) : (
+            <div
+              style={{
+                backgroundImage: `url(${details.imagerecette})`,
+              }}
+              className="recette-detail-img"
+            ></div>
+          )}
           <div className="ingredient-detail-div">
             <h2 className="ingredient-title">INGRÉDIENTS</h2>
             <h3

@@ -7,6 +7,12 @@
 
 .recette-img {
   max-width: 150px;
+  max-height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 400px;
+  width: 400px;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -54,25 +60,23 @@
 .yes-btn {
   margin: 10px;
   background-color: var(--green);
+  transition: 0.3s ease;
 }
 
 .no-btn {
   margin: 10px;
+  transition: 0.3s ease;
 }
 
-.remove-btn:hover {
+.remove-btn:hover,
+.yes-btn:hover,
+.no-btn:hover {
   color: white;
   filter: brightness(110%);
   transform: translateX(1px) translateY(1px);
 }
 
-@media screen and (min-width: 501px) and (max-width: 999px) {
-  .recette-img {
-    max-width: 300px;
-  }
-}
-
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 500px) {
   .recette-title {
     font-weight: 400;
     font-size: 18px;
@@ -81,6 +85,7 @@
   }
   .recette-img {
     max-width: 300px;
+    max-height: 300px;
   }
   .recette-summary {
     margin: 50px;

@@ -111,7 +111,7 @@ const NouvelleRecette = () => {
   return (
     <div className="main">
       <Toaster position="bottom-center" />
-      <div>
+      <div className="description-container">
         <h2 className="description-title">
           Une idée de recette ? Ajoutez-votre recette en complétant les champs
           ci-dessous
@@ -181,7 +181,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="remove-btn"
                       >
-                        Supprimer
+                        Supprimer la ligne
                       </button>
                     )}
 
@@ -192,7 +192,7 @@ const NouvelleRecette = () => {
                           type="button"
                           className="add-btn"
                         >
-                          Ajouter
+                          Ajouter une ligne
                         </button>
                       )}
                   </div>
@@ -225,7 +225,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="remove-btn"
                       >
-                        <span>Supprimer</span>
+                        <span>Supprimer la ligne</span>
                       </button>
                     )}
 
@@ -235,7 +235,7 @@ const NouvelleRecette = () => {
                         type="button"
                         className="add-btn"
                       >
-                        <span>Ajouter</span>
+                        <span>Ajouter une ligne</span>
                       </button>
                     )}
                   </div>

@@ -9,6 +9,7 @@
   margin: auto;
   z-index: 2;
   animation: fade-in 0.5s;
+  max-width: 1000px;
 }
 
 .popup-container {

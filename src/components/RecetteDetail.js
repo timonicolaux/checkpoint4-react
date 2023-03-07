@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/RecetteDetail.css";
-import ClosePopup from "../assets/closepopup.png";
+import { IoMdClose } from "react-icons/io";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import noImage from "../assets/no-image.jpeg";
@@ -30,12 +30,7 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
     <div className="popup">
       <Toaster position="bottom-center" />
       <div className="popup-container">
-        <img
-          src={ClosePopup}
-          alt="close-popup"
-          className="close-popup"
-          onClick={closePopup}
-        />
+        <IoMdClose size={50} className="close-popup" />
         <div className="recette-detail">
           <h1 className="recette-detail-titre">{details.titre}</h1>
           {details.imagerecette === "" ? (

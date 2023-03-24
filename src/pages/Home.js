@@ -21,8 +21,10 @@ const Home = () => {
       if (result) {
         setRecettes(result.data);
         const getTwoRecettes = await getRandomRecettes(result.data);
-        setRandomRecettes(getTwoRecettes);
-        setIsLoading(false);
+        setTimeout(() => {
+          setRandomRecettes(getTwoRecettes);
+          setIsLoading(false);
+        }, 1000);
       } else return "no data";
     } catch (error) {
       console.log("get route not working");

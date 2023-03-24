@@ -38,12 +38,9 @@ const Recettes = () => {
       className="main"
       onClick={(e) => {
         if (
-          e.target.classList.value === "remove-btn" ||
-          e.target.classList.value === "remove-btn-container" ||
-          e.target.classList.value === "confirmation-container" ||
-          e.target.classList.value === "confirmation-btn-container" ||
-          e.target.classList.value === "yes-btn" ||
-          e.target.classList.value === "no-btn"
+          e.target.id === "remove-btn" ||
+          e.target.id === "yes-btn" ||
+          e.target.id === "no-btn"
         )
           return;
         displayDetail && setDisplayDetail(false);
@@ -58,11 +55,17 @@ const Recettes = () => {
         />
       )}
       <div>
-        <div className="selector-div">
+        <div className="mt-8">
+          <h2 className="description-title">
+            Retrouvez ici l'ensemble de nos recettes !
+          </h2>
+        </div>
+        <div className="mb-6 mx-auto flex flex-col">
+          <label htmlFor="category" />
           <select
-            className="dish-selector"
-            name="dish-selector"
-            id="dish-selector"
+            className="mx-auto max-w-[500px] text-center h-8 min-w-[300px] md:min-w-[500px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded  px-4 focus:outline-none"
+            id="category"
+            type="select"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -72,11 +75,7 @@ const Recettes = () => {
             <option value="desserts">DESSERTS</option>
           </select>
         </div>
-        <div>
-          <h2 className="description-title">
-            Retrouvez ici l'ensemble de nos recettes !
-          </h2>
-        </div>
+
         {category === "entrées" || category === "all" || category === "" ? (
           <div>
             <h1 className="category-title">ENTRÉES</h1>

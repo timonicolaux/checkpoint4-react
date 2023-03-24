@@ -39,14 +39,14 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
                 backgroundImage: `url(${noImage})`,
               }}
               className="recette-detail-img"
-            ></div>
+            />
           ) : (
             <div
               style={{
                 backgroundImage: `url(${details.imagerecette})`,
               }}
               className="recette-detail-img"
-            ></div>
+            />
           )}
           <div className="ingredient-detail-div">
             <h2 className="ingredient-title">INGRÉDIENTS</h2>
@@ -197,22 +197,31 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
         </div>
         {details.id > 10 && !confirm && (
           <div className="remove-btn-container">
-            <button className="remove-btn" onClick={() => setConfirm(true)}>
+            <button
+              className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+              onClick={() => setConfirm(true)}
+              id="remove-btn"
+            >
               Supprimer
             </button>
           </div>
         )}
         {confirm && (
           <div className="confirmation-container">
-            <p>Confirmez-vous cette action ?</p>
+            <p className="text-center">Confirmez-vous cette action ?</p>
             <div className="confirmation-btn-container">
               <button
-                className="yes-btn"
+                className="bg-green-600 hover:bg-green-500 text-white font-bold m-2 py-2 px-4 mx-2 rounded mt-4 w-fit"
                 onClick={() => deleteRecette(details.id)}
+                id="yes-btn"
               >
                 Oui
               </button>
-              <button className="no-btn" onClick={() => setConfirm(false)}>
+              <button
+                className="bg-red-600 hover:bg-red-500 text-white mx-2 font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+                onClick={() => setConfirm(false)}
+                id="no-btn"
+              >
                 Non
               </button>
             </div>

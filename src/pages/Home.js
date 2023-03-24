@@ -21,8 +21,10 @@ const Home = () => {
       if (result) {
         setRecettes(result.data);
         const getTwoRecettes = await getRandomRecettes(result.data);
-        setRandomRecettes(getTwoRecettes);
-        setIsLoading(false);
+        setTimeout(() => {
+          setRandomRecettes(getTwoRecettes);
+          setIsLoading(false);
+        }, 1000);
       } else return "no data";
     } catch (error) {
       console.log("get route not working");
@@ -59,8 +61,6 @@ const Home = () => {
       ) : (
         ""
       )}
-
-      <div className="vegetables-img-container" />
 
       <div className="main-section">
         <div className="home-title-div">

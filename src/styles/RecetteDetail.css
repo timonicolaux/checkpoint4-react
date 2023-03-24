@@ -39,6 +39,8 @@
 
 .recette-detail-titre {
   padding-bottom: 30px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .recette-detail-img {

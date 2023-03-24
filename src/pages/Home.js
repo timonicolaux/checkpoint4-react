@@ -60,8 +60,6 @@ const Home = () => {
         ""
       )}
 
-      <div className="vegetables-img-container" />
-
       <div className="main-section">
         <div className="home-title-div">
           <h2 className="home-title">

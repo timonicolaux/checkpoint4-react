@@ -4,19 +4,8 @@
   margin-bottom: 70px;
 }
 
-.vegetables-img-container {
-  background-image: url("../assets/vegetables.jpg");
-  height: 400px;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: 0 10px 30px rgb(0 0 0 / 0.2);
-}
-
 .main-section {
-  padding-top: 400px;
+  padding-top: 40px;
   max-width: 1000px;
 }
 
@@ -33,6 +22,9 @@
   padding-right: 20px;
   text-align: justify;
   text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .random-recettes {
@@ -60,6 +52,7 @@
 
 .reload-btn-container {
   display: flex;
+  justify-content: center;
 }
 
 .reload-btn {
@@ -92,14 +85,5 @@
   }
   .reload-btn {
     margin-bottom: 50px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .vegetables-img-container {
-    height: 300px;
-  }
-  .main-section {
-    padding-top: 320px;
   }
 }

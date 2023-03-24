@@ -39,14 +39,14 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
                 backgroundImage: `url(${noImage})`,
               }}
               className="recette-detail-img"
-            ></div>
+            />
           ) : (
             <div
               style={{
                 backgroundImage: `url(${details.imagerecette})`,
               }}
               className="recette-detail-img"
-            ></div>
+            />
           )}
           <div className="ingredient-detail-div">
             <h2 className="ingredient-title">INGRÉDIENTS</h2>

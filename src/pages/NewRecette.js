@@ -151,7 +151,6 @@ const NouvelleRecette = () => {
                 className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded  px-4 focus:outline-none focus:bg-white"
                 id="category"
                 type="select"
-                maxLength={100}
                 value={categoryForm}
                 onChange={(e) => setCategoryForm(e.target.value)}
                 required
@@ -179,7 +178,7 @@ const NouvelleRecette = () => {
                       id="ingredient"
                       type="text"
                       placeholder="ex: 150g de farine"
-                      maxLength={100}
+                      maxLength={300}
                       value={ingredientList.ingredient}
                       onChange={(event) => handleChangeIngredient(index, event)}
                       required
@@ -225,7 +224,7 @@ const NouvelleRecette = () => {
                         name={`etape${index}`}
                         id="step"
                         placeholder="ex: Lavez et épluchez les légumes"
-                        maxLength="400"
+                        maxLength={400}
                         value={stepList.step}
                         onChange={(event) => handleChangeStep(index, event)}
                         required
@@ -268,7 +267,7 @@ const NouvelleRecette = () => {
                 placeholder="ex: https://super-image.jpg"
                 value={imageForm}
                 onChange={(e) => setImageForm(e.target.value)}
-                maxLength="300"
+                maxLength={300}
                 required
               />
             </div>

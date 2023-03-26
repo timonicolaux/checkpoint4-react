@@ -50,7 +50,12 @@ const NouvelleRecette = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!titleForm.length || categoryForm === "") {
+    if (
+      !titleForm.length ||
+      categoryForm === "" ||
+      !stepList[0]["etape0"] ||
+      !ingredientList[0]["ingredient0"]
+    ) {
       return toast.error(
         "Veuillez saisir au moins un titre, une catégorie, un ingrédient et une étape"
       );
@@ -101,7 +106,7 @@ const NouvelleRecette = () => {
       .catch(() => toast.error("Une erreur est survenue"))
       .finally(
         setTitleForm(""),
-        setCategoryForm("Entree"),
+        setCategoryForm(""),
         setIngredientList([{}]),
         setStepList([{}]),
         setImageForm("")

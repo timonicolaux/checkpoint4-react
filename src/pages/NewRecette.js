@@ -185,7 +185,7 @@ const NouvelleRecette = () => {
                     />
                   </div>
 
-                  {ingredientList.length > 1 && (
+                  {ingredientList.length > 1 && index !== 0 && (
                     <button
                       className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
                       onClick={deleteIngredient}
@@ -230,7 +230,7 @@ const NouvelleRecette = () => {
                         required
                       />
                     </div>
-                    {stepList.length > 1 && (
+                    {stepList.length > 1 && index !== 0 && (
                       <button
                         className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
                         onClick={deleteStep}
@@ -258,7 +258,7 @@ const NouvelleRecette = () => {
                 className="block tracking-wide text-gray-900 text-md font-medium mb-2"
                 htmlFor="image"
               >
-                IMAGE
+                IMAGE (URL)
               </label>
               <input
                 className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white"

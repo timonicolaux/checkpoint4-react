@@ -29,7 +29,7 @@ const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
   return (
     <div className="popup">
       <Toaster position="bottom-center" />
-      <div className="popup-container">
+      <div className="bg-zinc-400 w-[90%] h-[80%] py-[30px] px-[20px] overflow-y-scroll my-[10%] rounded-md shadow-md">
         <IoMdClose size={50} className="close-popup" />
         <div className="recette-detail">
           <h1 className="recette-detail-titre">{details.titre}</h1>

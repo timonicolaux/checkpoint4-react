@@ -7,7 +7,14 @@
 
 .recette-img {
   max-width: 150px;
+  max-height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 400px;
+  width: 400px;
   border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .recette-title {
@@ -18,13 +25,58 @@
   max-width: 150px;
 }
 
-@media screen and (min-width: 501px) and (max-width: 999px) {
-  .recette-img {
-    max-width: 300px;
-  }
+.remove-btn-container {
+  display: flex;
+  justify-content: center;
 }
 
-@media screen and (min-width: 1000px) {
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.remove-btn,
+.yes-btn,
+.no-btn {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  height: 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  background-color: var(--red);
+  box-shadow: var(--button-boxShadow);
+  transition: 0.3s ease;
+}
+
+.yes-btn {
+  margin: 10px;
+  background-color: var(--green);
+  transition: 0.3s ease;
+}
+
+.no-btn {
+  margin: 10px;
+  transition: 0.3s ease;
+}
+
+.remove-btn:hover,
+.yes-btn:hover,
+.no-btn:hover {
+  color: white;
+  filter: brightness(110%);
+  transform: translateX(1px) translateY(1px);
+}
+
+@media screen and (min-width: 500px) {
   .recette-title {
     font-weight: 400;
     font-size: 18px;
@@ -32,7 +84,8 @@
     padding: 20px 0 0 0;
   }
   .recette-img {
-    max-width: 400px;
+    max-width: 300px;
+    max-height: 300px;
   }
   .recette-summary {
     margin: 50px;

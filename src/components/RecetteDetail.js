@@ -1,26 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/RecetteDetail.css";
-import ClosePopup from "../assets/closepopup.png";
+import { IoMdClose } from "react-icons/io";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import noImage from "../assets/no-image.jpeg";
 
-const RecetteDetail = ({ closePopup, details }) => {
+const RecetteDetail = ({ closePopup, details, setDisplayDetail, getData }) => {
+  const [confirm, setConfirm] = useState(false);
+
+  const deleteRecette = async (id) => {
+    try {
+      const result = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/recettes/${id}`
+      );
+      if (result) {
+        toast.success("Recette supprimée");
+        setTimeout(() => {
+          setDisplayDetail(false);
+          getData();
+        }, 2000);
+      }
+    } catch (error) {
+      toast.error("Une erreur est survenue");
+      console.log(error);
+    }
+  };
+
   return (
     <div className="popup">
-      <div className="popup-container">
-        <img
-          src={ClosePopup}
-          alt="close-popup"
-          className="close-popup"
-          onClick={closePopup}
-        />
+      <Toaster position="bottom-center" />
+      <div className="bg-zinc-400 w-[90%] h-[80%] py-[30px] px-[20px] overflow-y-scroll my-[10%] rounded-md shadow-md">
+        <IoMdClose size={50} className="close-popup" />
         <div className="recette-detail">
           <h1 className="recette-detail-titre">{details.titre}</h1>
-          <img
-            src={details.imagerecette}
-            alt={details.titre}
-            className="recette-detail-img"
-          />
+          {details.imagerecette === "" ? (
+            <div
+              style={{
+                backgroundImage: `url(${noImage})`,
+              }}
+              className="recette-detail-img"
+            />
+          ) : (
+            <div
+              style={{
+                backgroundImage: `url(${details.imagerecette})`,
+              }}
+              className="recette-detail-img"
+            />
+          )}
           <div className="ingredient-detail-div">
             <h2 className="ingredient-title">INGRÉDIENTS</h2>
+            <h3
+              className={details.ingredient0 != null ? "ingredient-detail" : ""}
+            >
+              {details.ingredient0}
+            </h3>
             <h3
               className={details.ingredient1 != null ? "ingredient-detail" : ""}
             >
@@ -111,6 +145,9 @@ const RecetteDetail = ({ closePopup, details }) => {
           </div>
           <div className="etape-detail-div">
             <h2 className="etape-title">ÉTAPES</h2>
+            <h3 className={details.etape0 != null ? "etape-detail" : ""}>
+              {details.etape0 != null ? `■ ` + details.etape0 : ""}
+            </h3>
             <h3 className={details.etape1 != null ? "etape-detail" : ""}>
               {details.etape1 != null ? `■ ` + details.etape1 : ""}
             </h3>
@@ -158,6 +195,38 @@ const RecetteDetail = ({ closePopup, details }) => {
             </h3>
           </div>
         </div>
+        {details.id > 10 && !confirm && (
+          <div className="remove-btn-container">
+            <button
+              className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+              onClick={() => setConfirm(true)}
+              id="remove-btn"
+            >
+              Supprimer
+            </button>
+          </div>
+        )}
+        {confirm && (
+          <div className="confirmation-container">
+            <p className="text-center">Confirmez-vous cette action ?</p>
+            <div className="confirmation-btn-container">
+              <button
+                className="bg-green-600 hover:bg-green-500 text-white font-bold m-2 py-2 px-4 mx-2 rounded mt-4 w-fit"
+                onClick={() => deleteRecette(details.id)}
+                id="yes-btn"
+              >
+                Oui
+              </button>
+              <button
+                className="bg-red-600 hover:bg-red-500 text-white mx-2 font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+                onClick={() => setConfirm(false)}
+                id="no-btn"
+              >
+                Non
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

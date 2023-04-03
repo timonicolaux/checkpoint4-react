@@ -50,7 +50,12 @@ const NouvelleRecette = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!titleForm.length || categoryForm === "") {
+    if (
+      !titleForm.length ||
+      categoryForm === "" ||
+      !stepList[0]["etape0"] ||
+      !ingredientList[0]["ingredient0"]
+    ) {
       return toast.error(
         "Veuillez saisir au moins un titre, une catégorie, un ingrédient et une étape"
       );
@@ -101,7 +106,7 @@ const NouvelleRecette = () => {
       .catch(() => toast.error("Une erreur est survenue"))
       .finally(
         setTitleForm(""),
-        setCategoryForm("Entree"),
+        setCategoryForm(""),
         setIngredientList([{}]),
         setStepList([{}]),
         setImageForm("")
@@ -111,35 +116,46 @@ const NouvelleRecette = () => {
   return (
     <div className="main">
       <Toaster position="bottom-center" />
-      <div>
+      <div className="description-container">
         <h2 className="description-title">
           Une idée de recette ? Ajoutez-votre recette en complétant les champs
           ci-dessous
         </h2>
+        <p className="description-info">
+          (Vous aurez ensuite la possibilité de supprimer votre recette)
+        </p>
       </div>
-      <div className="form-elements">
-        <div className="form-container">
+      <div className="bg-zinc-200 w-[90%] flex flex-col justify-center items-center  overflow-x-hidden rounded-md shadow-md mb-[20%]">
+        <div className="mb-6 mx-auto my-4 flex flex-col">
           <form onSubmit={handleSubmit}>
-            <div className="title-recette">
-              <label className="label">TITRE DE LA RECETTE</label>
+            <div className="mb-6 mx-auto my-4 flex flex-col">
+              <label
+                className="block tracking-wide text-gray-900 text-md font-medium mb-2"
+                htmlFor="recette-title"
+              >
+                TITRE DE LA RECETTE
+              </label>
               <input
+                className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white"
+                id="recette-title"
                 type="text"
-                className="title-input"
-                name="titre"
-                id="title-recette"
-                placeholder="ex: Gâteau au chocolat"
-                maxLength="100"
+                maxLength={100}
                 value={titleForm}
                 onChange={(e) => setTitleForm(e.target.value)}
                 required
               />
             </div>
-            <div className="title-recette">
-              <label className="label">CATEGORIE</label>
+            <div className="mb-6 mx-auto my-4 flex flex-col">
+              <label
+                className="block tracking-wide text-gray-900 text-md font-medium mb-2"
+                htmlFor="category"
+              >
+                CATEGORIE
+              </label>
               <select
-                className="category-input"
-                name="categorie"
-                id="category-recette"
+                className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded  px-4 focus:outline-none focus:bg-white"
+                id="category"
+                type="select"
                 value={categoryForm}
                 onChange={(e) => setCategoryForm(e.target.value)}
                 required
@@ -150,116 +166,122 @@ const NouvelleRecette = () => {
                 <option value="Dessert">Dessert</option>
               </select>
             </div>
+
             {ingredientList.map((ingredients, index) => (
-              <div key={index} className="all-ingredients">
+              <div key={index}>
                 <div className="ingredients">
-                  <div className="ingredient">
-                    <label htmlFor="ingredient" className="label">
+                  <div className="mb-6 mx-auto my-4 flex flex-col">
+                    <label
+                      className="block tracking-wide text-gray-900 text-md font-medium mb-2"
+                      htmlFor="ingredient"
+                    >
                       INGRÉDIENT
                     </label>
-                    <div className="input-div">
-                      <input
-                        type="text"
-                        className="ingredient-input"
-                        name={`ingredient${index}`}
-                        id="ingredient"
-                        placeholder="ex: 150g de farine"
-                        maxLength="100"
-                        value={ingredientList.ingredient}
-                        onChange={(event) =>
-                          handleChangeIngredient(index, event)
-                        }
-                        required
-                      />
-                    </div>
-                    {ingredientList.length > 1 && (
+                    <input
+                      className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white"
+                      name={`ingredient${index}`}
+                      id="ingredient"
+                      type="text"
+                      placeholder="ex: 150g de farine"
+                      maxLength={300}
+                      value={ingredientList.ingredient}
+                      onChange={(event) => handleChangeIngredient(index, event)}
+                      required
+                    />
+                  </div>
+
+                  {ingredientList.length > 1 && index !== 0 && (
+                    <button
+                      className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+                      onClick={deleteIngredient}
+                      id="remove-btn"
+                    >
+                      Supprimer la ligne
+                    </button>
+                  )}
+
+                  {ingredientList.length - 1 === index &&
+                    ingredientList.length < 15 && (
                       <button
-                        onClick={deleteIngredient}
-                        type="button"
-                        className="remove-btn"
+                        className="bg-green-600 hover:bg-green-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
+                        onClick={addIngredient}
+                        id="add-btn"
                       >
-                        Supprimer
+                        Ajouter une ligne
                       </button>
                     )}
-
-                    {ingredientList.length - 1 === index &&
-                      ingredientList.length < 15 && (
-                        <button
-                          onClick={addIngredient}
-                          type="button"
-                          className="add-btn"
-                        >
-                          Ajouter
-                        </button>
-                      )}
-                  </div>
                 </div>
               </div>
             ))}
             {stepList.map((steps, index) => (
-              <div key={index} className="all-ingredients">
+              <div key={index}>
                 <div className="ingredients">
                   <div className="ingredient">
-                    <label htmlFor="step" className="label">
-                      ÉTAPE
-                    </label>
-                    <div className="input-div">
+                    <div className="mb-6 mx-auto my-4 flex flex-col">
+                      <label
+                        className="block tracking-wide text-gray-900 text-md font-medium mb-2"
+                        htmlFor="step"
+                      >
+                        ETAPE
+                      </label>
                       <textarea
-                        rows="5"
-                        className="step-input"
+                        className="mx-auto max-w-[650px] h-[150px] min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white"
                         name={`etape${index}`}
                         id="step"
                         placeholder="ex: Lavez et épluchez les légumes"
-                        maxLength="400"
+                        maxLength={400}
                         value={stepList.step}
                         onChange={(event) => handleChangeStep(index, event)}
                         required
                       />
                     </div>
-                    {stepList.length > 1 && (
+                    {stepList.length > 1 && index !== 0 && (
                       <button
+                        className="bg-red-600 hover:bg-red-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
                         onClick={deleteStep}
-                        type="button"
-                        className="remove-btn"
+                        id="remove-btn"
                       >
-                        <span>Supprimer</span>
+                        <span>Supprimer la ligne</span>
                       </button>
                     )}
 
                     {stepList.length - 1 === index && stepList.length < 15 && (
                       <button
+                        className="bg-green-600 hover:bg-green-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-fit"
                         onClick={addStep}
-                        type="button"
-                        className="add-btn"
+                        id="add-btn"
                       >
-                        <span>Ajouter</span>
+                        <span>Ajouter une ligne</span>
                       </button>
                     )}
                   </div>
                 </div>
               </div>
             ))}
-            <div className="title-recette">
-              <label className="label">IMAGE</label>
+            <div className="mb-6 mx-auto my-4 flex flex-col">
+              <label
+                className="block tracking-wide text-gray-900 text-md font-medium mb-2"
+                htmlFor="image"
+              >
+                IMAGE (URL)
+              </label>
               <input
+                className="mx-auto max-w-[650px] h-8 min-w-[300px] md:min-w-[650px] shadow-xs bg-slate-50 text-black border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white"
                 type="text"
-                className="title-input"
-                name="imagerecette"
-                id="title-recette"
+                id="image"
                 placeholder="ex: https://super-image.jpg"
                 value={imageForm}
                 onChange={(e) => setImageForm(e.target.value)}
-                maxLength="300"
+                maxLength={300}
                 required
               />
             </div>
             <div className="submitBtnContainer">
               <button
-                type="submit"
-                className="submitBtn"
+                className="bg-green-600 hover:bg-green-500 text-white mx-auto font-bold m-2 py-2 px-4 rounded mt-4 w-40"
                 onClick={handleSubmit}
               >
-                ENVOYER
+                Valider
               </button>
             </div>
           </form>

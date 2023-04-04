@@ -1,8 +1,9 @@
 ## Description
 
-This is a little full-stack project, a food application where you can visualize and add new meal recipes.
-It was at first my last school project, and was made in two days. I decided later on to make some changes and to deploy it online.
-Front-end (React) and back-end (Node) are deployed on vercel and database is stored on GoogleCloud Database (mySQL).
+Cette application est un petit projet full-stack, un site de cuisine où il est possible de visualiser et d'ajouter des recettes.
+C'était à la base un exercice lors de ma formation développeur web, qui était de développer une petite application full stack. J'ai décidé plus tard d'apporter quelques modifications et de le déployer en ligne.
+Le front-end (React) et le back-end (Node/Express) sont déployés sur vercel et la base de données (mySQL) est stockée sur un hébergeur gratuit.
 
+## Visualisation du rendu
 
-You can visualize deployment here --> https://jecuisine.vercel.app/
+Voici le lien du déploiement : https://jecuisine.vercel.app/
